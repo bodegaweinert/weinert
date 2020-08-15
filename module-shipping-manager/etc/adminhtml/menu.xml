@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Combinatoria_ShippingManager::combinatoria_shippingmanager_section"
+             title="Administrador de envíos"
+             translate="title"
+             module="Combinatoria_ShippingManager"
+             parent="Magento_Backend::metodos_envio_menu"
+             resource="Magento_Backend::metodos_envio_menu"
+             sortOrder="1"/>
+        <add id="Combinatoria_ShippingManager::guias" title="Generaración masiva de guías" module="Combinatoria_ShippingManager" sortOrder="100" parent="Combinatoria_ShippingManager::combinatoria_shippingmanager_section" action="shippingmanager/guias/admin" resource="Combinatoria_ShippingManager::guias"/>
+    </menu>
+</config>

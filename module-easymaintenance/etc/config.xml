@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+	<default>
+		<easymaintenance>
+			<general>
+				<!-- <is_enabled>1</is_enabled> -->
+				<logFileName><![CDATA[easymaintenance.log]]></logFileName>
+				<maintenance_html>
+					<![CDATA[
+						<div id="header" class="clearfix">
+						<div class="container">
+						<h2>we are sorry , this site is down for maintenance</h2>
+						<p>Lorem ipsum dolor sit amet, mea porro commodo delectus ad, malorum ceteros aliquando cu sit. Menandri partiendo salutatus sed te, ne gubergren ullamcorper ius. Sit purto justo ei. Ut affert fabellas eam, ius oblique moderatius eu, quo at clita omnes volumus.</p>
+						</div>
+						</div>
+					]]>
+				</maintenance_html>
+			</general>
+		</easymaintenance>
+	</default>
+</config>

@@ -1,0 +1,25 @@
+{
+    "name": "combinatoria/module-argentine-regions",
+    "description": "Regions of Argentina for Magento2.",
+    "require": {
+        "magento/module-directory": "100.*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.3",
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "name": "Damian Culotta (v1.0.0)"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Barbanet\\ArgentinaRegions\\": ""
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "combinatoria/module-rule-error-message",
+  "description": "Generic error message for rules.",
+  "authors": [
+    {
+      "name": "Combinatoria",
+      "email": "contacto@combinatoria.com.ar"
+    }
+  ],
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Combinatoria\\RuleErrorMessage\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  }
+}

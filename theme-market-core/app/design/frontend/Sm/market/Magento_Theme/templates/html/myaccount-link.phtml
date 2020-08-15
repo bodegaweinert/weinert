@@ -1,0 +1,12 @@
+<li class="myaccount-link">
+    <a id="myaccount_link" href="<?php echo $this->getUrl('customer/account') ?>" title="<?php echo __('My Account') ?>">
+        <?php echo __('My Account') ?>
+    </a>
+</li>
+<script type="text/x-magento-init">
+    {
+        "#myaccount_link": {
+            "Magento_Customer/js/view/myAccountLink": {}
+        }
+    }
+</script>

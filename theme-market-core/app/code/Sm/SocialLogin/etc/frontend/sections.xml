@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SM Listing Tabs - Version 2.4.0
+ * Copyright (c) 2017 YouTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * Author: YouTech Company
+ * Websites: http://www.magentech.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="sociallogin/popup/create">
+        <section name="checkout-data"/>
+        <section name="cart"/>
+    </action>
+</config>

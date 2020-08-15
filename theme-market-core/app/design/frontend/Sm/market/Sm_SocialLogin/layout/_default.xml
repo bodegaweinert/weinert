@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SM Listing Tabs - Version 2.4.0
+ * Copyright (c) 2017 YouTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * Author: YouTech Company
+ * Websites: http://www.magentech.com
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- <css src="Sm_SocialLogin::css/style.css" />
+        <css src="Sm_SocialLogin::css/font-awesome.min.css" /> -->
+        <css src="Sm_SocialLogin::css/magnific-popup.css"/>
+    </head>
+    <body>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="captcha_page_head_components"
+                   ifconfig="sociallogin/general/is_enabled" template="Magento_Captcha::js/components.phtml"/>
+        </referenceBlock>
+
+        <referenceBlock name="header_customer_form_login" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Sm\SocialLogin\Block\Popup" name="sm-social-login-popup" as="popup.modal"
+                   template="popup.phtml">
+                <block class="Sm\SocialLogin\Block\Form\Login" name="sm-social-login-popup-authentication"
+                       as="popup.authentication" template="Sm_SocialLogin::popup/form/authentication.phtml">
+                    <block class="Sm\SocialLogin\Block\Popup\Social" name="sm-social-login-popup-authentication-social"
+                           as="popup.authentication.social" template="popup/form/authentication/social.phtml"/>
+                    <block class="Magento\Captcha\Block\Captcha" name="social-login-captcha" as="login.captcha"
+                           after="-">
+                        <action method="setFormId">
+                            <argument name="formId" xsi:type="string">user_login</argument>
+                        </action>
+                        <action method="setImgWidth">
+                            <argument name="width" xsi:type="string">220</argument>
+                        </action>
+                        <action method="setImgHeight">
+                            <argument name="width" xsi:type="string">40</argument>
+                        </action>
+                    </block>
+                </block>
+                <block class="Sm\SocialLogin\Block\Form\Register" name="sm-social-login-popup-create" as="popup.create"
+                       template="Sm_SocialLogin::popup/form/create.phtml">
+                    <block class="Magento\Captcha\Block\Captcha" name="social-create-captcha" as="create.captcha"
+                           after="-">
+                        <action method="setFormId">
+                            <argument name="formId" xsi:type="string">user_create</argument>
+                        </action>
+                        <action method="setImgWidth">
+                            <argument name="width" xsi:type="string">220</argument>
+                        </action>
+                        <action method="setImgHeight">
+                            <argument name="width" xsi:type="string">40</argument>
+                        </action>
+                    </block>
+                </block>
+                <block class="Magento\Framework\View\Element\Template" name="sm-social-login-popup-forgot"
+                       as="popup.forgot" template="Sm_SocialLogin::popup/form/forgot.phtml">
+                    <block class="Magento\Captcha\Block\Captcha" name="social-forgot-password-captcha"
+                           as="forgot.captcha" after="-">
+                        <action method="setFormId">
+                            <argument name="formId" xsi:type="string">user_forgotpassword</argument>
+                        </action>
+                        <action method="setImgWidth">
+                            <argument name="width" xsi:type="string">220</argument>
+                        </action>
+                        <action method="setImgHeight">
+                            <argument name="width" xsi:type="string">40</argument>
+                        </action>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="authentication-popup">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="authenticationPopup" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="social-buttons" xsi:type="array">
+                                    <item name="component" xsi:type="string">Sm_SocialLogin/js/view/social-buttons
+                                    </item>
+                                    <item name="displayArea" xsi:type="string">before</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

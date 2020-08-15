@@ -1,0 +1,41 @@
+<!--@subject  Bienvenido a los beneficios de {{var store.getFrontendName()}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"var store.getFrontendName()":"Store Name",
+"var coupon_expiration_date":"Coupon expiration date",
+"var code":"Coupon Code"
+"template config_path=\"design\/email\/footer_template\"":"Email Footer Template",
+"template config_path=\"design\/email\/header_template\"":"Email Header Template"
+}
+@-->
+
+{{template config_path="design/email/header_template"}}
+<table cellspacing="0" cellpadding="0" border="0">
+    <!-- [ header starts here] -->
+    <tr>
+        <td>
+            <h1>Bienvenido a los beneficios de {{var store.getFrontendName()}}!.</h1>
+        </td>
+    </tr>
+    <!-- [ middle starts here] -->
+    {{depend code}}
+    <tr>
+        <td>
+            <p style="font-size:14px; font-weight: 100; margin:0px;">Como agradecimiento, te regalamos un cupón de descuento para tu próxima compra. Tu código de cupón es:</p>
+            <div style="background:#d4e4fb; font-size:22px; padding:5px; color:#000; border:1px dashed #90acd4; text-align: center;
+                        margin: auto; width: 300px; display: block;">{{var code}}</div>
+            <p style="font-size:14px; font-weight: 100; margin:0px; margin-top: 10px;">¿Cómo usar el cupón?<br/>Muy fácil, selecciona el producto que queres, y al momento de pagar ingresá el cupón. Veras el descuento aplicado en el momento.</p>
+            <p style="font-size:14px; font-weight: 100; margin:0px; margin-top: 10px;">Consultá las condiciones de las promos vigentes <a style="color: #2bc6ff;" href="{{store url=''}}/promociones-vigentes" target="_blank">acá</a></p>
+        </td>
+    </tr>
+    {{/depend}}
+    {{depend coupon_expiration_date}}
+     <tr>
+        <td>
+            <span style="font-size:10px;">Tenes tiempo hasta el <strong>{{var coupon_expiration_date}}</strong> para usarlo!</span>
+        </td>
+    </tr>
+    {{/depend}}
+</table>
+{{template config_path="design/email/footer_template"}}

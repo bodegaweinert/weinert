@@ -1,0 +1,18 @@
+<?php if ($block->getHelper()->supportCookieDirective()):?>
+
+	<script>
+
+		(function()
+		{
+			AEC.CookieConsent.getConsentDialog(dataLayer, <?php echo json_encode(
+			[
+				'type' 			=> 'json',
+				'cookie' 		=> $block->getUrl('datalayer/index/cookie'),
+				'cookieContent' => $block->getUrl('datalayer/index/cookieContent'),
+				'cookieConsent' => $block->getUrl('datalayer/index/cookieConsent')
+			]) ?>);
+			
+		})();
+		
+	</script>
+<?php endif ?>

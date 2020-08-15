@@ -1,0 +1,33 @@
+{
+  "name": "combinatoria/module-seo-suite",
+  "description": "Amasty SEO Toolkit v1.5.2",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "type": "magento2-component",
+  "require": {
+    "magento/magento-composer-installer": "*",
+    "combinatoria/module-amasty-core" : "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Amasty\\CrossLinks\\"     : "src/Amasty/CrossLinks",
+      "Amasty\\Meta\\"           : "src/Amasty/Meta",
+      "Amasty\\SeoHtmlSitemap\\" : "src/Amasty/SeoHtmlSitemap",
+      "Amasty\\SeoRichData\\"    : "src/Amasty/SeoRichData",
+      "Amasty\\SeoSingleUrl\\"   : "src/Amasty/SeoSingleUrl",
+      "Amasty\\SeoToolKit\\"     : "src/Amasty/SeoToolKit",
+      "Amasty\\XmlSitemap\\"     : "src/Amasty/XmlSitemap"
+    },
+    "files" : [
+      "src/Amasty/CrossLinks/registration.php",
+      "src/Amasty/Meta/registration.php",
+      "src/Amasty/SeoHtmlSitemap/registration.php",
+      "src/Amasty/SeoRichData/registration.php",
+      "src/Amasty/SeoSingleUrl/registration.php",
+      "src/Amasty/SeoToolKit/registration.php",
+      "src/Amasty/XmlSitemap/registration.php"
+    ]
+  }
+}

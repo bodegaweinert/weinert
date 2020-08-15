@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\CatalogInventory\Block\Qtyincrements
+ */
+?>
+<?php if ($block->getProductQtyIncrements() && $block->getProduct()->getCanShowPrice() !== false) : ?>
+    <div class="product pricing">
+        Precio por unidad: $<?= number_format($block->getProduct()->getPrice(),2) ?><br>
+        Factor: <?= $block->getProductQtyIncrements() ?> unidades.<br>
+        Precio por bulto: $<?= $block->getProduct()->getPrice() * $block->getProductQtyIncrements() ?><br><br>
+    </div>
+<?php endif ?>

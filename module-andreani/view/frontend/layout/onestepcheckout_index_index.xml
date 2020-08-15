@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Ids_Andreani::css/andreani.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Ids\Andreani\Block\Andreani" name="ids_andreani_head" template="head.phtml" cacheable="false" />
+        </referenceContainer>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="step-config" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="shipping-rates-validation" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="andreaniestandar-rates-validation" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Ids_Andreani/js/view/estandar/shipping-rates-validation</item>
+                                                                </item>
+                                                                <item name="andreaniurgente-rates-validation" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Ids_Andreani/js/view/urgente/shipping-rates-validation</item>
+                                                                </item>
+                                                                <item name="andreanisucursal-rates-validation" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Ids_Andreani/js/view/sucursal/shipping-rates-validation</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

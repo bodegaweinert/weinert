@@ -1,0 +1,59 @@
+<?php if (false !== $data = $block->getDetailPushForward()): ?>
+	<script>
+	
+		<?php
+		/**
+		 * AdWords Dynamic Remarketing
+		 */
+		?>
+		
+		window.google_tag_params.ecomm_pagetype 	= '<?php echo $data->google_tag_params['ecomm_pagetype'] ?>';
+		window.google_tag_params.ecomm_category 	= '<?php echo $data->google_tag_params['ecomm_category'] ?>';
+		window.google_tag_params.ecomm_prodid		= '<?php echo $data->google_tag_params['ecomm_prodid'] ?>';
+		window.google_tag_params.ecomm_totalvalue 	=  <?php echo $data->google_tag_params['ecomm_totalvalue'] ?>;
+		window.google_tag_params.returnCustomer 	=  <?php echo $block->getHelper()->getIsReturnCustomer() ?>;
+
+		<?php if ($block->getHelper()->supportDynx()): ?>
+
+		window.google_tag_params.dynx_pagetype 		= 'offerdetail';
+		window.google_tag_params.dynx_itemid 		= window.google_tag_params.ecomm_prodid;
+		window.google_tag_params.dynx_totalvalue 	= window.google_tag_params.ecomm_totalvalue;
+		
+		<?php endif ?>
+		
+		<?php
+		/**
+		 * Detail push
+		 */
+		?>
+
+		AEC.Cookie.detail(<?php echo $data->push ?>).push(dataLayer, false);
+		
+		<?php
+		/**
+		 * Grouped product map
+		 */
+		?>
+		
+		window.G = <?php echo $data->group ?>;
+
+		<?php if ($block->getHelper()->facebook()): ?>
+
+			if ("undefined" !== typeof fbq)
+			{
+				if (AEC.Const.COOKIE_DIRECTIVE)
+				{
+					AEC.CookieConsent.queue(function()
+					{
+						fbq('track', 'ViewContent', <?php echo $data->fbq ?>);
+					});
+				}
+				else 
+				{
+					fbq('track', 'ViewContent', <?php echo $data->fbq ?>);
+				}	
+			}
+			
+		<?php endif ?>
+	</script>
+<?php endif ?>

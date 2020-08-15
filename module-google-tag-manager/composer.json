@@ -1,0 +1,22 @@
+{
+  "name": "combinatoria/module-google-tag-manager",
+  "description": "Magento 2 Google Tag Manager Enhanced Ecommerce (UA) Tracking 100.0.2",
+  "type": "magento2-component",
+  "version": "1.0.1",
+  "license": [
+    "proprietary"
+  ],
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Anowave\\Ec\\": "Anowave/Ec",
+      "Anowave\\Package\\": "Anowave/Package"
+    },
+    "files": [
+      "Anowave/Ec/registration.php",
+      "Anowave/Package/registration.php"
+    ]
+  }
+}

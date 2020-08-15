@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+        <add id="Combinatoria_HelpDesk::portal"
+             title="Ayuda"
+             module="Combinatoria_HelpDesk"
+             sortOrder="00"
+             resource="Combinatoria_HelpDesk::portal"
+             action="adminhtml/dashboard"
+        />
+    </menu>
+
+</config>

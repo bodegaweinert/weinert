@@ -1,0 +1,41 @@
+<?php
+/**
+ *
+ * SM Social Login - Version 1.0.0
+ * Copyright (c) 2017 YouTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * Author: YouTech Company
+ * Websites: http://www.magentech.com
+ */
+?>
+
+<?php $availableSocials = $block->getAvailableSocials(); ?>
+<?php if ($block->canShow(\Sm\SocialLogin\Model\System\Config\Source\Position::PAGE_POPUP) && sizeof($availableSocials)): ?>
+    <div class="block social-login-wrap col-mgt mgt-5">
+        <div class="block-title">
+            <?php echo __('Or Sign In With') ?>
+        </div>
+        <div class="block-content">
+            <?php foreach ($availableSocials as $key => $social): ?>
+                <div class="actions-toolbar social-btn <?= $key ?>-login">
+                    <a class="btn btn-block btn-social btn-<?= $block->getBtnKey($key) ?>" data-mage-init='{"socialProvider": {"url": "<?php echo $social['login_url'] ?>", "label": "<?php echo __('Login By %1', $social['label']) ?>"}}'>
+                        <span class="fa fa-<?= $block->getBtnKey($key) ?>"></span>
+						<?php echo __('Sign in with %1', $social['label']) ?>
+                    </a>
+                </div>
+			<?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php
+/**
+ * Add variable to show social buttons on customer authentication popup
+ */
+?>
+<?php $authenConfig = $block->getSocialButtonsConfig(); ?>
+<?php if ($block->canShow(\Sm\SocialLogin\Model\System\Config\Source\Position::PAGE_AUTHEN) && sizeof($availableSocials)): ?>
+    <script>
+        window.socialAuthenticationPopup = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($authenConfig); ?>;
+    </script>
+<?php endif; ?>

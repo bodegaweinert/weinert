@@ -1,0 +1,22 @@
+{
+    "name": "combinatoria/module-cronscheduler",
+    "description": "Depende de combinatoria/module-wyomind-core>=3.0.0",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "combinatoria/module-wyomind-core": ">=3.0.0"
+    },
+    "authors": [
+    {
+      "name": "Wyomind v1.3.0.3"
+    }
+  ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Wyomind\\CronScheduler\\": ""
+        }
+    }
+}

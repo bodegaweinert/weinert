@@ -1,0 +1,74 @@
+<?php
+/**
+ * @var MercadoPago\Core\Block\Custom\Success $block
+ */
+    $order = $this->getOrder();
+    $total = $this->getTotal();
+    $payment = $this->getPayment();
+    
+    //monta link para o pedido
+    $link_to_order = '<a href="' . $block->escapeUrl($this->getOrderUrl()) . '">' . $block->escapeHtml($order->getIncrementId()) . '</a>';
+    $successMsg = 'Your order %1 has been successfully generated.';
+    
+    $payment_method = $this->getPaymentMethod();
+    $info_payment = $this->getInfoPayment();
+
+    $accountCreated = $this->getAccountCreatedVisible();
+
+?>
+
+<div id="box-mercadopago">
+
+    <?php if(!isset($info_payment['status']['value'])): ?>
+        <h2 class="general-subtitle"><?php /* @escapeNotVerified */ echo __('Thank you for your purchase!'); ?></h2>
+        <p  id="order-generated">
+            <?php /* @escapeNotVerified */ echo __($successMsg, $link_to_order); ?>
+            <?php if ($accountCreated){?>
+            <br/>También te enviamos otro e-mail de bienvenida con tus datos de identificación<br/>para que en tus próximas visitas puedas ganar tiempo comprando más rápido.
+            <?php }?>
+        </p>
+    <?php else: ?>
+        <?php
+            $message_status = $this->getMessageByStatus(
+                $info_payment['status']['value'],
+                $info_payment['status_detail']['value'],
+                (isset($info_payment['payment_method']['value'])) ? $info_payment['payment_method']['value'] : '',
+                (isset($info_payment['installment']['value'])) ? $info_payment['installment']['value'] : '' ,
+                $this->getTotal()
+            );
+        ?>
+        <h2 class="general-subtitle"><?php /* @escapeNotVerified */ echo __('Thank you for your purchase!'); ?></h2>
+
+        <p id="order-generated">
+            <?php /* @escapeNotVerified */ echo __($successMsg, $link_to_order); ?>
+            <?php if ($accountCreated){?>
+                <br/>También te enviamos otro e-mail de bienvenida con tus datos de identificación<br/>para que en tus próximas visitas puedas ganar tiempo comprando más rápido.
+            <?php }?>
+        </p>
+
+        <h3 class="mercadopago-title-info-payment"><?php /* @escapeNotVerified */ echo __('Payment information'); ?></h3>
+
+        <p>
+            <?php
+                echo __($info_payment['cardholderName']['text']).'<br/>';
+                echo __($info_payment['DNI']['text']).'<br/>';
+                echo __($info_payment['payment_method']['text']).'<br/>';
+                echo __($info_payment['expiration_date']['text']).'<br/>';
+                echo __($info_payment['installments']['text']).'<br/>';
+                echo __($info_payment['status']['text']).'<br/>';
+            ?>
+        </p>
+    <?php endif; ?>
+</div>
+<div id="logo-mercadopago">
+    <img src="https://secure.mlstatic.com/components/resources/mp/desktop/css/assets/desktop-logo-mercadopago.png"/>
+    <img src="/media/onestepcheckout/protegida.png" class="protegida"/>
+</div>
+
+<div class="primary button-success">
+    <p>
+        Una vez que el pago se haya acreditado coordinaremos la entrega.<br/>
+        Por cualquier duda o consulta no dejes de comunicarte con nosotros.
+    </p>
+    <a href="<?php echo $block->escapeUrl($block->getUrl()) ?>"><span><u><?php /* @escapeNotVerified */ echo __('Volver a la home') ?></u></span></a>
+</div>

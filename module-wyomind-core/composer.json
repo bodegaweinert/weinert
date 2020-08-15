@@ -1,0 +1,14 @@
+{
+    "name": "combinatoria/module-wyomind-core",
+    "description": "",
+    "type": "magento2-module",
+    "version": "3.5.0",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Wyomind\\Core\\": ""
+        }
+    }
+}

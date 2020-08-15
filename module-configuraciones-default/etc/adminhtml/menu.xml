@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Backend::metodos_envio_menu"
+             title="Métodos de envío"
+             translate="title"
+             module="Magento_Backend"
+             resource="Magento_Backend::metodos_envio_menu"
+             dependsOnModule="Magento_Backend"
+             sortOrder="100"/>
+    </menu>
+</config>

@@ -1,0 +1,10 @@
+<!--@subject {{var store.getFrontendName()}} Maintenance Alert : Timer About To Complete @-->
+<!--@vars
+{"var message":"Message"
+}
+@-->
+{{template config_path="design/email/header_template"}}
+
+	{{trans "%message" message=$message}}
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Ids_Andreani::ids_andreani_section"
+             title="Andreani"
+             translate="title"
+             module="Ids_Andreani"
+             parent="Magento_Backend::metodos_envio_menu"
+             resource="Magento_Backend::metodos_envio_menu"
+             sortOrder="1"/>
+        <add id="Ids_Andreani::tarifa_admin" title="Administracion de tarifas por tabla" module="Ids_Andreani" sortOrder="100" parent="Ids_Andreani::ids_andreani_section" action="andreani/tarifa/admin" resource="Ids_Andreani::tarifa_admin"/>
+        <!--<add id="Ids_Andreani::guias" title="Generaración masiva de guías" module="Ids_Andreani" sortOrder="100" parent="Ids_Andreani::ids_andreani_section" action="andreani/guias/admin" resource="Ids_Andreani::guias"/>-->
+    </menu>
+</config>

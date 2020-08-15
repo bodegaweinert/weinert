@@ -1,0 +1,57 @@
+<?php
+$customer = $this->getCustomer();
+
+if($customer->isLoggedIn()){
+	$name = $customer->getCustomer()->getName();
+	$email = $customer->getCustomer()->getEmail();
+} else {
+	$name = '';
+	$email = '';
+}
+
+if( $block->getConfigValue('easymaintenance/contactus/active') ) :
+?>
+<div class="side-feedback">
+	<a href="javascript:void(0)" onclick="openFeedbackWindow('feedback_information')" title="Feedback" id="link_feedback"></a>
+</div>
+<div id="backgroundpopup" class="background-opacity" style="display: none; background: none repeat scroll 0% 0% rgb(0, 0, 0);"></div>
+
+<div style="display: none;" id="feedback_information" class="feedback-container">
+	<a class="feedback_close" title="close" href="#" onclick="closeFeedbackWindow('feedback_information'); return false;"></a>
+	<div class="feedback-popup-content">
+		<div class="feedback-title"> <?php echo __('Contact Us') ?>  </div>
+		<div class="feedback-content">
+			<form class="form" action="<?php echo $this->getControllerUrl("easymaintenance/indexcontroller/postfeedback") ?>" method="post" id="frm_feedback" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+				<div id="success_message" style="display: none;" class="feedback-success-msg"></div>
+
+				<ul class="form-list" id="feedback_options">
+					<li>
+						<label for="fname"><?php echo __('Your Full Name').":" ?> <span class="required">*</span></label>
+						<input name="feedbackbuname" value="<?php echo htmlspecialchars($name) ?>" title="<?php echo __('Name') ?>" id="fname" type="text" data-validate="{required:true}" class="input-text required-entry" required />
+					</li>
+					<li>
+						<label for="email"><?php echo __('Your E-mail').":" ?> <span class="required">*</span></label>
+						<input name="feedbackmail" value="<?php echo htmlspecialchars($email) ?>" title="<?php echo __('Email Address') ?>" id="email" type="email" data-validate="{required:true, 'validate-email':true}" class="input-text required-entry validate-email" required />
+					</li>
+					<li>
+						<label for="heard_about_us"><?php echo __('Where did you hear about us')."?" ?></label>
+						<input name="feedbackheard" value="" title="<?php echo __('Email Address') ?>" id="heard_about_us" type="text" class="input-text" />
+					</li>
+					<li>
+						<label for="details"><?php echo __('Details').":" ?> <span class="required">*</span></label>
+						<textarea id="details" class="input-text required-entry" data-validate="{required:true}"  name="feedbackdetails" rows="10" col="50" required ></textarea>
+					</li>
+					<li>
+						<button id="btnsubmit" name="btnsubmit"  type="submit" class="button-feedback" onclick="sendFeedback('<?php echo $this->getControllerUrl("easymaintenance/indexcontroller/postfeedback"); ?>')">
+							<span><span><?php echo __('Submit') ?></span></span>
+						</button>
+						<span id="loader" class="loader-feedback" style="display: none;">
+						<img src="<?php echo $this->getViewFileUrl('Biztech_Easymaintenance/images/loader.gif') ?>" alt='' title=''/></span>
+					</li>
+				</ul>
+			</form>
+        </div>
+    </div>
+        <div style="text-align: right">Powered by <a target="_blank" href="https://www.appjetty.com/magento2-easy-site-maintenance.htm">appjetty.com</a></div>
+</div>
+<?php endif; ?>

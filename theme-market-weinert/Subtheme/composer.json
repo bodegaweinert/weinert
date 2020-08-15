@@ -1,0 +1,18 @@
+{
+    "name": "combinatoria/theme-market-weinert",
+    "description": "N/A",
+    "require": {
+        "combinatoria/theme-market-core":">=1.0.7"
+    },
+    "type": "magento2-theme",
+    "version": "1.0.4",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}

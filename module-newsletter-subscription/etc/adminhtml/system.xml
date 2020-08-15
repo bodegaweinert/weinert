@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="newsletter" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Newsletter</label>
+            <tab>customer</tab>
+            <resource>Magento_Newsletter::newsletter</resource>
+            <group id="coupon" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Coupon Options</label>
+                <field id="coupon_code" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Coupon code</label>
+                    <source_model>Combinatoria\NewsletterSubscription\Model\System\Config\Source\Coupon</source_model>
+                </field>
+                <field id="code_length" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Code Length</label>
+                </field>
+                <field id="code_format" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Code Format</label>
+                    <source_model>Combinatoria\NewsletterSubscription\Model\System\Config\Source\CodeFormat</source_model>
+                </field>
+                <field id="code_prefix" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Code Prefix</label>
+                </field>
+                <field id="code_suffix" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Code Suffix</label>
+                </field>
+                <field id="dash_every_x_characters" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dash Every X Characters</label>
+                    <comment>If empty no separation.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

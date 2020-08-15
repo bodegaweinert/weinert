@@ -1,0 +1,6 @@
+<?php $banners = $this->getBannerMobileCollection() ?>
+<?php if(is_array($banners)): ?>
+    <?php foreach($banners as $banner):?>
+        <a href="<?php echo $banner['link'] ?>"><img class="mark-lazy" src="<?php echo $this->getMediaDirectory().$banner['image'] ?>" alt="<?php echo $banner['alt'] ?>" /></a>
+    <?php endforeach;?>
+<?php endif; ?>

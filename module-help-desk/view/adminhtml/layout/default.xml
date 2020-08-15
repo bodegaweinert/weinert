@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Combinatoria_HelpDesk::css/base.css"/>
+        <script src="Combinatoria_HelpDesk::js/base.js"/>
+    </head>
+    <!-- Widget de Jira Service Desk
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Text" name="helpDeskScript">
+                <arguments>
+                    <argument name="text" xsi:type="string"><![CDATA[
+                    <script data-jsd-embedded data-key="329f1599-24d3-4230-999d-7ab9fd76085d" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+                    ]]></argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+    -->
+</page>

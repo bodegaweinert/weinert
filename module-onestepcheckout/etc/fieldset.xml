@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:DataObject/etc/fieldset.xsd">
+    <scope id="global">
+        <fieldset id="customer_address">
+            <field name="street_number">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="street_floor">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="street_apartment">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="dni">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="dob">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="require_invoice">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="cuit">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="business_name">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="convenio">
+                <aspect name="create" />
+                <aspect name="update" />
+                <aspect name="to_quote_address" />
+            </field>
+        </fieldset>
+        <fieldset id="sales_convert_order_address">
+            <field name="street_number">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="street_floor">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="street_apartment">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="dni">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="dob">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="require_invoice">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="cuit">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="business_name">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="convenio">
+                <aspect name="to_quote_address" />
+                <aspect name="to_customer_address" />
+            </field>
+        </fieldset>
+        <fieldset id="sales_convert_quote_address">
+            <field name="street_number">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="street_floor">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="street_apartment">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="dni">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="dob">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="require_invoice">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="cuit">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="business_name">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="convenio">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+        </fieldset>
+        <fieldset id="sales_copy_order_billing_address">
+            <field name="street_number">
+                <aspect name="to_order" />
+            </field>
+            <field name="street_floor">
+                <aspect name="to_order" />
+            </field>
+            <field name="street_apartment">
+                <aspect name="to_order" />
+            </field>
+            <field name="dni">
+                <aspect name="to_order" />
+            </field>
+            <field name="dob">
+                <aspect name="to_order" />
+            </field>
+            <field name="require_invoice">
+                <aspect name="to_order" />
+            </field>
+            <field name="cuit">
+                <aspect name="to_order" />
+            </field>
+            <field name="business_name">
+                <aspect name="to_order" />
+            </field>
+            <field name="convenio">
+                <aspect name="to_order" />
+            </field>
+        </fieldset>
+        <fieldset id="order_address">
+            <field name="street_number">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="street_floor">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="street_apartment">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="dni">
+                <aspect name="to_customer_address" />
+                <aspect name="to_customer" />
+            </field>
+            <field name="dob">
+                <aspect name="to_customer_address" />
+                <aspect name="to_customer" />
+            </field>
+            <field name="require_invoice">
+                <aspect name="to_customer_address" />
+                <aspect name="to_order" />
+            </field>
+            <field name="cuit">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="business_name">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="convenio">
+                <aspect name="to_customer_address" />
+            </field>
+        </fieldset>
+    </scope>
+</config>

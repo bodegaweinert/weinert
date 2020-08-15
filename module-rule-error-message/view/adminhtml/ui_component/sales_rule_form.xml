@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="rule_information" sortOrder="10">
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </field>
+        <field name="description" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">2</item>
+                </item>
+            </argument>
+        </field>
+        <field name="is_active" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">3</item>
+                </item>
+            </argument>
+        </field>
+        <field name="website_ids" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">4</item>
+                </item>
+            </argument>
+        </field>
+        <field name="customer_group_ids" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">5</item>
+                </item>
+            </argument>
+        </field>
+        <field name="coupon_type" component="Magento_SalesRule/js/form/element/coupon-type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">6</item>
+                    <item name="source" xsi:type="string">sales_rule</item>
+                    <item name="displayOnlyForCouponType" xsi:type="string">2</item>
+                </item>
+            </argument>
+            <settings>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.coupon_code</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.use_auto_generation</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="2">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.uses_per_coupon</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="3">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.error_message</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>2</value>
+                            <actions>
+                                <action name="0">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.coupon_code</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.use_auto_generation</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="2">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.uses_per_coupon</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="3">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.error_message</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="2">
+                            <value>3</value>
+                            <actions>
+                                <action name="0">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.coupon_code</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.use_auto_generation</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="2">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.uses_per_coupon</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="3">
+                                    <target>sales_rule_form.sales_rule_form.rule_information.error_message</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="true">Coupon</label>
+                <visible>true</visible>
+                <dataScope>coupon_type</dataScope>
+            </settings>
+        </field>
+        <field name="coupon_code" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">7</item>
+                </item>
+            </argument>
+        </field>
+        <field name="use_auto_generation" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">8</item>
+                </item>
+            </argument>
+        </field>
+        <field name="error_message" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">9</item>
+                    <item name="source" xsi:type="string">sales_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Error Message</label>
+                <visible>true</visible>
+                <dataScope>error_message</dataScope>
+                <notice translate="true">
+                    If you leave empty, default message will be shown when the coupon is invalid.
+                </notice>
+            </settings>
+        </field>
+    </fieldset>
+</form>

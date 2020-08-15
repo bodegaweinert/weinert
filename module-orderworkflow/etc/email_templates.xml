@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="ow_order_received_email"
+              label="Your Order has been received"
+              file="order_received_email.html"
+              type="html"
+              module="Combinatoria_OrderWorkflow"
+              area="frontend"/>
+
+    <template id="ow_order_accredited_email"
+              label="Your payment has been accredited"
+              file="order_accredited_email.html"
+              type="html"
+              module="Combinatoria_OrderWorkflow"
+              area="frontend"/>
+
+    <template id="ow_order_delivered_email"
+              label="Your order has been delivered"
+              file="order_delivered_email.html"
+              type="html"
+              module="Combinatoria_OrderWorkflow"
+              area="frontend"/>
+</config>

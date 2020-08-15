@@ -1,0 +1,164 @@
+<?php
+/** @var $block \Aheadworks\OneStepCheckout\Block\Onepage\Success */
+
+$showNotification = $block->getShowNotification();
+$notification = $block->getNotification();
+$shippingInfo = $block->getShippingInfo();
+$billingInfo = $block->getBillingInfo();
+$paymentInfoHtml = $block->getPaymentHtml();
+$showNewCustomerBlock = $block->getShowNewCustomerBlock();
+$userName = $block->getCustomerName();
+$customerInfo = $block->getCustomerInfo();
+?>
+<div class="success-content">
+    <!-- PRIMER COLUMNA -->
+    <div class="order-main-content">
+        <div id="order-success" class="success-block">
+            <h1><?php echo __('¡Tu compra está reservada!');?></h1>
+            <?php if ($showNotification) {?>
+                <p class="success-notification">
+                    <?php echo $notification;?>
+                </p>
+            <?php }?>
+            <p><?php echo __('En breve, vas a estar recibiendo un e-mail con el detalle de tu compra y los próximos pasos.');?></p>
+            <?php if ($block->getCanViewOrder()) :?>
+                <p><?php echo __('Por cualquier consulta tu número de pedido es ' . sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
+            <?php  else :?>
+                <p><?php echo __('Por cualquier consulta tu número de pedido es <strong>'.$block->escapeHtml($block->getOrderId()).'</strong>') ?></p>
+            <?php endif;?>
+            <p><?php echo __('Ante cualquier duda o consulta respecto a tu compra, comunicate por teléfono o a través de nuestra página de contacto');?></p>
+        </div>
+
+        <div id="order-shipping-info" class="success-block">
+            <h2><?php echo __('FORMA DE ENTREGA');?></h2>
+            <p><?php echo $shippingInfo;?></p>
+            <p><?php echo __('El pedido será entregado únicamente al titular de la compra presentando el número de pedido y documento.');?></p>
+        </div>
+
+        <div id="order-customer-info" class="success-block">
+            <h2><?php echo __('TITULAR DE LA COMPRA');?></h2>
+            <ul>
+                <?php foreach($customerInfo as $info){?>
+                    <li><?php echo $info;?></li>
+                <?php }?>
+            </ul>
+        </div>
+
+        <div id="order-shipping-address" class="success-block">
+            <h2><?php echo __('DATOS DE FACTURACION');?></h2>
+            <ul>
+                <?php foreach($billingInfo as $info){?>
+                    <li><?php echo $info;?></li>
+                <?php }?>
+            </ul>
+        </div>
+
+        <div id="order-payment-info" class="success-block">
+            <h2><?php echo __('FORMA DE PAGO');?></h2>
+            <p>
+                <?php echo $paymentInfoHtml;?>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- SEGUNDA COLUMNA -->
+    <div class="order-secondary-content">
+        <?php if ($showNewCustomerBlock) {?>
+            <div id="new-customer-block" class="success-block">
+                <h2><?php echo __('Te damos la bienvenida ').$userName;?></h2>
+                <h3><?php echo __('¿Qué vas a poder hacer en tu cuenta?');?></h3>
+                <ul>
+                    <li><img src="/media/onestepcheckout/ok-benef.png"/> <?php echo __('Consultar el estado de tus compras.');?></li>
+                    <li><img src="/media/onestepcheckout/ok-benef.png"/> <?php echo __('Administrar tus productos favoritos.');?></li>
+                    <li><img src="/media/onestepcheckout/ok-benef.png"/> <?php echo __('Definir tus preferencias e intereses.');?></li>
+                    <li><img src="/media/onestepcheckout/ok-benef.png"/> <?php echo __('Acceder al historial de tus pedidos.');?></li>
+                    <li><img src="/media/onestepcheckout/ok-benef.png"/> <?php echo __('Retomar tus compras incompletas.');?></li>
+                </ul>
+                <br/>
+                <p class="email-notification"><?php echo __('Recibirás un email con los datos de acceso a tu cuenta.');?></p>
+            </div>
+        <?php } ?>
+        <div id="order-items-info" class="success-block">
+            <div class="products">
+                <?php $items = $block->getOrder()->getAllItems();
+                /** @var \Magento\Sales\Model\Order\Item $item */
+                foreach ($items as $item){
+                    if ($item->getProductType() == 'configurable'){
+                        continue;
+                    }
+                    if ($item->getParentItemId()){
+                        $price = $item->getParentItem()->getPrice();
+                        $productUrl = $block->getProductUrl($item->getParentItem()->getProductId());
+                    } else {
+                        $price = $item->getPrice();
+                        $productUrl = $block->getProductUrl($item->getProductId());
+                    }
+                    $productImg = $block->getProductImage($item->getProductId());
+                    $priceHtml = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($price,2,".",""),true,false);
+                    ?>
+                    <div class="product">
+                        <div class="product-img">
+                            <a class="product-item-photo" href="<?php echo $productUrl;?>">
+                                <img src="<?php echo $productImg;?>"/>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <span class="name"><?php echo $item->getName();?></span>
+                            <span class="qty">Cantidad: <?php echo round($item->getQtyOrdered()); ?></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price"><?php echo $priceHtml; ?></span>
+                        </div>
+                        <br clear="all"/>
+                    </div>
+                <?php } ?>
+            </div>
+            <?php $subtotal = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($block->getOrder()->getSubtotal(),2,".",""),true,false);?>
+            <?php $shippingPrice = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($block->getOrder()->getShippingAmount(),2,".",""),true,false);?>
+            <?php $discount = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($block->getOrder()->getDiscountAmount(),2,".",""),true,false);?>
+            <?php $financeCost = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($block->getOrder()->getFinanceCostAmount(),2,".",""),true,false);?>
+            <?php $regEspImp = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($block->getOrder()->getRegEspImp(),2,".",""),true,false);?>
+            <?php $total = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($block->getOrder()->getGrandTotal(),2,".",""),true,false);?>
+
+            <div class="subtotals">
+                <div class="subtotal">
+                    <span class="item">Subtotal</span>
+                    <span class="item-price"><?php echo $subtotal?></span>
+                    <br clear="all"/>
+                </div>
+                <?php if ($block->getOrder()->getFinanceCostAmount() > 0) {?>
+                    <div class="subtotal">
+                        <span class="item">Costos de financiación de Mercado Pago</span>
+                        <span class="item-price"><?php echo $financeCost;?></span>
+                        <br clear="all"/>
+                    </div>
+                <?php }?>
+                <?php if ($block->getOrder()->getRegEspImp() > 0) {?>
+                    <div class="subtotal">
+                        <span class="item">Factura A Perc. IIBB</span>
+                        <span class="item-price"><?php echo $regEspImp;?></span>
+                        <br clear="all"/>
+                    </div>
+                <?php }?>
+                <div class="subtotal">
+                    <span class="item"><?php echo __('Shipping &amp; Handling');?></span>
+                    <span class="item-price"><?php echo $shippingPrice;?></span>
+                    <br clear="all"/>
+                </div>
+                <?php if (abs($block->getOrder()->getDiscountAmount()) > 0) {?>
+                    <div class="subtotal">
+                        <span class="item"><?php echo $block->getOrder()->getDiscountDescription();?></span>
+                        <span class="item-price"><?php echo $discount;?></span>
+                        <br clear="all"/>
+                    </div>
+                <?php }?>
+            </div>
+            <div class="total">
+                <span class="item">Total</span>
+                <span class="item-price"><?php echo $total;?></span>
+                <br clear="all"/>
+            </div>
+        </div>
+    </div>
+</div>

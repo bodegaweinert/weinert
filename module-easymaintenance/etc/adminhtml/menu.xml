@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Biztech. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+	<menu>
+		<add id="Biztech_Easymaintenance::notification" title="Easy Site Maintenanace" module="Biztech_Easymaintenance" sortOrder="20" dependsOnModule="Biztech_Easymaintenance" action="easymaintenance/notificationcontroller/index" resource="Biztech_Easymaintenance::notification"/>
+	</menu>
+</config>

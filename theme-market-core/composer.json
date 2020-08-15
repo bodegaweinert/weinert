@@ -1,0 +1,58 @@
+{
+  "name": "combinatoria/theme-market-core",
+  "description": "SM Market Theme v4.6.0",
+  "version": "1.8.4",
+  "license": [
+    "proprietary"
+  ],
+  "type": "magento2-component",
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Magefan\\Blog\\"      : "app/code/Magefan/Blog",
+      "Magefan\\Community\\" : "app/code/Magefan/Community",
+      "Sm\\BackEnd\\"        : "app/code/Sm/BackEnd",
+      "Sm\\Categories\\"     : "app/code/Sm/Categories",
+      "Sm\\CategoriesMenu\\" : "app/code/Sm/CategoriesMenu",
+      "Sm\\FilterProducts\\" : "app/code/Sm/FilterProducts",
+      "Sm\\ListingTabs\\"    : "app/code/Sm/ListingTabs",
+      "Sm\\Market\\"         : "app/code/Sm/Market",
+      "Sm\\MegaMenu\\"       : "app/code/Sm/MegaMenu",
+      "Sm\\SearchBox\\"      : "app/code/Sm/SearchBox",
+      "Sm\\ShopBy\\"         : "app/code/Sm/ShopBy",
+      "Sm\\SocialLogin\\"    : "app/code/Sm/SocialLogin",
+      "Sm\\Checkout\\"       : "app/code/Sm/Checkout"
+    },
+    "files" : [
+      "app/code/Magefan/Blog/registration.php",
+      "app/code/Magefan/Community/registration.php",
+      "app/code/Sm/BackEnd/registration.php",
+      "app/code/Sm/Categories/registration.php",
+      "app/code/Sm/CategoriesMenu/registration.php",
+      "app/code/Sm/FilterProducts/registration.php",
+      "app/code/Sm/ListingTabs/registration.php",
+      "app/code/Sm/Market/registration.php",
+      "app/code/Sm/MegaMenu/registration.php",
+      "app/code/Sm/SearchBox/registration.php",
+      "app/code/Sm/ShopBy/registration.php",
+      "app/code/Sm/SocialLogin/registration.php",
+      "app/design/frontend/Sm/market/registration.php",
+      "app/design/frontend/Sm/market_mobile/registration.php",
+      "app/design/frontend/Sm/market_child/registration.php",
+      "app/code/Sm/Checkout/registration.php"
+    ]
+  },
+  "extra" :{
+    "map": [
+      ["lib/internal/*", "lib/internal/"],
+      ["lib/web/fotorama/","lib/web/fotorama"],
+      ["pub/media/lazyloading","pub/media/"],
+      ["pub/media/pattern","pub/media/"],
+      ["pub/media/sm","pub/media/"],
+      ["pub/media/wysiwyg/*","pub/media/wysiwyg"],
+      ["pub/media/onestepcheckout","pub/media/"]
+    ]
+  }
+}

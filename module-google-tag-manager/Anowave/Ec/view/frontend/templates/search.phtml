@@ -1,0 +1,51 @@
+<?php if (false !== $data = $block->getSearchPush()): ?>
+	<script>
+		dataLayer.push(<?php echo $data->push ?>);
+
+		window.google_tag_params.ecomm_category = '<?php echo __('Search Results') ?>';
+		window.google_tag_params.returnCustomer = <?php echo $block->getHelper()->getIsReturnCustomer() ?>;
+		
+		<?php if ($block->getHelper()->facebook()): ?>
+		
+		if ("undefined" !== typeof fbq)
+		{
+			var push = <?php echo $data->push ?>, content_ids = [];
+
+			for(i = 0, l = push.ecommerce.impressions.length; i < l; i++)
+			{
+				content_ids.push(push.ecommerce.impressions[i].id);
+			}
+
+			window.content_ids = content_ids;
+
+			(function(callback)
+			{
+				if (AEC.Const.COOKIE_DIRECTIVE)
+				{
+					AEC.CookieConsent.queue(callback);
+				}
+				else 
+				{
+					callback.apply(window,[]);
+				}
+			})
+			(
+				(function(content_ids)
+				{
+					return function()
+					{
+						fbq("track", "Search", 
+						{
+							search_string: 		'<?php echo $block->escapeHtml($_GET['q']) ?>',
+							content_ids:		content_ids,
+							content_category: 	'<?php echo __('Search Results') ?>',
+							currency: 			'<?php echo $block->getHelper()->getCurrency() ?>'
+						});
+					}
+				})(content_ids)
+			);
+		}
+		
+		<?php endif ?>
+	</script>
+<?php endif ?>

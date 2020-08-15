@@ -1,0 +1,138 @@
+<?php
+/**
+ * Google Optimize Page Hiding Snippet
+ */
+?>
+<?php echo $block->getHelper()->getGoogleOptimizePageHidingSnippet() ?>
+<?php
+/**
+ * Google Optimize Standalone implementation
+ */
+?>
+<?php if ($block->getHelper()->getGoogleOptimizeIsStandalone()):?>
+
+	<script>
+	
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  
+		ga('create',  '<?php echo $block->getHelper()->getGoogleOptimizeAnalyticsId() ?>', 'auto');
+		ga('require', '<?php echo $block->getHelper()->getGoogleOptimizeContainerId() ?>');
+		
+	</script>
+	
+<?php endif ?>
+
+<script>
+
+	/**
+	 * Magento 2 Google Tag Manager Enhanced Ecommerce (UA) Tracking
+	 *
+	 * @author Anowave
+	 * @see http://www.anowave.com/marketplace/magento-2-extensions/magento-2-google-tag-manager-enhanced-ecommerce-ua-tracking/
+	 * @copyright 2018 Anowave
+	 */
+
+	window.dataLayer = window.dataLayer || [];
+
+	<?php
+	/**
+	 * AEC Constants
+	 */
+	?>
+	
+	AEC.Const = 
+	{
+		TIMING_CATEGORY_ADD_TO_CART:		'Add To Cart Time',
+		TIMING_CATEGORY_REMOVE_FROM_CART:	'Remove From Cart Time',
+		TIMING_CATEGORY_PRODUCT_CLICK:		'Product Detail Click Time',
+		TIMING_CATEGORY_CHECKOUT:			'Checkout Time',
+		TIMING_CATEGORY_CHECKOUT_STEP:		'Checkout Step Time',
+		TIMING_CATEGORY_PRODUCT_WISHLIST:	'Add to Wishlist Time',
+		TIMING_CATEGORY_PRODUCT_COMPARE:	'Add to Compare Time'
+	};
+
+	AEC.Const.URL 					= '<?php echo $block->getHelper()->getStore()->getBaseUrl() ?>';
+	AEC.Const.VARIANT_DELIMITER 	= '<?php echo \Anowave\Ec\Helper\Data::VARIANT_DELIMITER ?>';
+	AEC.Const.VARIANT_DELIMITER_ATT = '<?php echo \Anowave\Ec\Helper\Data::VARIANT_DELIMITER_ATT ?>';
+
+	<?php
+	/**
+	 * Checkout step indexes. Should match funnel configuration in GA
+	 */
+	?>
+	
+	AEC.Const.CHECKOUT_STEP_SHIPPING 	= <?php echo \Anowave\Ec\Helper\Constants::CHECKOUT_STEP_SHIPPING ?>;
+	AEC.Const.CHECKOUT_STEP_PAYMENT  	= <?php echo \Anowave\Ec\Helper\Constants::CHECKOUT_STEP_PAYMENT ?>;
+	AEC.Const.CHECKOUT_STEP_ORDER  		= <?php echo \Anowave\Ec\Helper\Constants::CHECKOUT_STEP_ORDER ?>;
+
+	<?php
+	/**
+	 * Custom dimension indexes
+	 */
+	?>
+	
+	AEC.Const.DIMENSION_SEARCH = <?php echo (int) $block->getHelper()->getInternalSearchDimension() ?>;
+
+	<?php
+	/**
+	 * Cookie Directive Constants
+	 */
+	?>
+
+	AEC.Const.COOKIE_DIRECTIVE 							= <?php echo json_encode($block->getHelper()->supportCookieDirective()) ?>;
+	AEC.Const.COOKIE_DIRECTIVE_CONSENT_GRANTED  		= <?php echo json_encode($block->getHelper()->isCookieConsentAccepted()) ?>;
+	AEC.Const.COOKIE_DIRECTIVE_SEGMENT_MODE 			= <?php echo json_encode($block->getHelper()->getCookieDirectiveIsSegmentMode()) ?>;
+	AEC.Const.COOKIE_DIRECTIVE_SEGMENT_MODE_EVENTS		= <?php echo json_encode($block->getHelper()->getCookieDirectiveConsentSegments()) ?>;	
+	AEC.Const.COOKIE_DIRECTIVE_CONSENT_GRANTED_EVENT 	= <?php echo json_encode(\Anowave\Ec\Helper\Constants::COOKIE_CONSENT_GRANTED_EVENT) ?>;
+
+	<?php
+	/**
+	 * Define messages
+	 */
+	?>
+	
+	AEC.Message = 
+	{
+		confirm: 			 <?php echo $block->getHelper()->useRemoveConfirm() ?>,
+		confirmRemoveTitle:  <?php echo $block->getHelper()->getJsonHelper()->encode(__('Are you sure?')) ?>,
+		confirmRemove: 		 <?php echo $block->getHelper()->getJsonHelper()->encode(__('Are you sure you would like to remove this item from the shopping cart?')) ?>
+		
+	};
+			
+	AEC.storeName 			= <?php echo $block->getHelper()->getJsonHelper()->encode($block->getHelper()->getStoreName()) ?>;
+	AEC.currencyCode	 	= <?php echo $block->getHelper()->getJsonHelper()->encode($block->getHelper()->getStore()->getCurrentCurrencyCode()) ?>;
+	AEC.useDefaultValues 	= <?php echo $block->getHelper()->getJsonHelper()->encode($block->getHelper()->useDefaultValues()) ?>;
+	AEC.facebook 			= <?php echo $block->getHelper()->getJsonHelper()->encode($block->getHelper()->facebook()) ?>;
+	AEC.eventCallback		= <?php echo $block->getHelper()->getEventCallback() ?>;
+
+	<?php
+	/**
+	 * Get super attributes
+	 */
+	?>
+	
+	AEC.SUPER = <?php echo $block->getHelper()->getSuper() ?>;
+
+	<?php 
+	/**
+	 * Get bundle items 
+	 */
+	?>
+
+	AEC.BUNDLE = <?php echo $block->getHelper()->getBundle() ?>;
+
+	<?php
+	/**
+	 * localStorage
+	 */
+	?>
+
+	AEC.localStorage = <?php echo $block->getHelper()->useLocalStorage() ?>;
+	
+</script>
+<?php
+/**
+ * Facebook Pixel Tracking
+ */
+?>
+<?php echo $block->getHelper()->getFacebookPixelCode() ?>

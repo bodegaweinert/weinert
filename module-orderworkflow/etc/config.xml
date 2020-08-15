@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ow_emails>
+            <order_received>
+                <order_received_template>ow_order_received_email</order_received_template>
+            </order_received>
+            <order_accredited>
+                <order_accredited_template>ow_order_accredited_email</order_accredited_template>
+            </order_accredited>
+            <order_delivered>
+                <order_delivered_template>ow_order_delivered_email</order_delivered_template>
+            </order_delivered>
+        </ow_emails>
+    </default>
+</config>

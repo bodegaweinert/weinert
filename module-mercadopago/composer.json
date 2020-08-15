@@ -1,0 +1,38 @@
+{
+  "name": "combinatoria/module-mercadopago",
+  "description": "Mercado Pago Magento 2 Plugin (v1.5.3)",
+  "authors": [
+    {
+      "name": "Mercado Pago",
+      "email": "info@mercadopago.com"
+    }
+  ],
+  "type": "magento2-component",
+  "version": "1.3.7",
+  "license": [
+    "proprietary"
+  ],
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "require-dev": {
+    "magento/product-community-edition": "2.*",
+    "phpunit/phpunit": "4.1.0",
+    "squizlabs/php_codesniffer": "1.5.3",
+    "phpmd/phpmd": "@stable",
+    "pdepend/pdepend": "2.2.2",
+    "sjparkinson/static-review": "~4.1",
+    "fabpot/php-cs-fixer": "~1.2",
+    "lusitanian/oauth": "~0.3 <=0.7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MercadoPago\\Core\\": "src/MercadoPago/Core",
+      "MercadoPago\\MercadoEnvios\\": "src/MercadoPago/MercadoEnvios"
+    },
+    "files": [
+      "src/MercadoPago/Core/registration.php",
+      "src/MercadoPago/MercadoEnvios/registration.php"
+    ]
+  }
+}

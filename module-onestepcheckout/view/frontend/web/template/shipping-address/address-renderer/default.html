@@ -1,0 +1,101 @@
+<li class="shipping-address-item" data-bind="css: isSelected() ? 'selected-item' : 'not-selected-item'">
+    <!-- ko text: address().prefix --><!-- /ko --> <!-- ko text: address().firstname --><!-- /ko -->
+    <!-- ko text: address().lastname --><!-- /ko --> <!-- ko text: address().suffix --><!-- /ko --><br/>
+
+    <!-- ko foreach: { data: address().customAttributes, as: 'element' } -->
+    <!-- ko foreach: { data: Object.keys(element), as: 'attribute' } -->
+    <!-- ko if: (attribute == 'dni') -->
+    DNI
+    <!-- ko ifnot: (element[attribute].value) -->
+    <!-- ko text: element[attribute] --><!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: (element[attribute].value) -->
+    <!-- ko text: element[attribute].value --><!-- /ko -->
+    <!-- /ko -->
+    <br/>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko text: address().street --><!-- /ko -->
+
+    <!-- ko foreach: { data: address().customAttributes, as: 'element' } -->
+    <!-- ko foreach: { data: Object.keys(element), as: 'attribute' } -->
+    <!-- ko if: (attribute != 'dni' && attribute != 'business_name' && attribute != 'cuit' && attribute != 'require_invoice' && attribute != 'convenio') -->
+    <!-- ko ifnot: (element[attribute].value) -->
+    <!-- ko text: element[attribute] --><!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: (element[attribute].value) -->
+    <!-- ko text: element[attribute].value --><!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->,<br/>
+
+    <!-- ko text: address().city --><!-- /ko -->, <!-- ko text: address().region --><!-- /ko -->, <!-- ko text: address().postcode --><!-- /ko -->,
+    <!-- ko text: getCountryName(address().countryId) --><!-- /ko -->,
+    <br/>TEL <!-- ko text: address().telephone --><!-- /ko -->.
+
+    <!-- ko foreach: { data: address().customAttributes, as: 'element' } -->
+    <!-- ko foreach: { data: Object.keys(element), as: 'attribute' } -->
+    <!-- ko if: (attribute != 'dni' && attribute != 'street_number' && attribute != 'street_floor' && attribute != 'street_apartment') -->
+    <!-- ko if: (attribute == 'require_invoice' && (element[attribute].value == true || element[attribute] == true)) -->
+    <br/><br/>Factura A <br/>
+    <!-- ko foreach: { data: Object.keys(element), as: 'fc_attribute' } -->
+    <!-- ko if: (fc_attribute == 'cuit') -->
+    CUIT <!-- ko ifnot: (element[fc_attribute].value) -->
+    <!-- ko text: element[fc_attribute] --><!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: (element[fc_attribute].value) -->
+    <!-- ko text: element[fc_attribute].value --><!-- /ko -->
+    <!-- /ko -->
+    <br/>
+    <!-- /ko -->
+    <!-- ko if: (fc_attribute == 'business_name') -->
+    RS  <!-- ko ifnot: (element[fc_attribute].value) -->
+    <!-- ko text: element[fc_attribute] --><!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: (element[fc_attribute].value) -->
+    <!-- ko text: element[fc_attribute].value --><!-- /ko -->
+    <!-- /ko -->
+    <br/>
+    <!-- /ko -->
+    <!-- ko if: (fc_attribute == 'convenio') -->
+    Convenio
+    <!-- ko if: (element[fc_attribute].value == 'local_inscripto' || element[fc_attribute] == 'local_inscripto') -->
+    Local Inscripto
+    <!-- /ko -->
+    <!-- ko if: (element[fc_attribute].value == 'multilateral_inscripto' || element[fc_attribute] == 'multilateral_inscripto') -->
+    Multilateral Inscripto
+    <!-- /ko -->
+    <!-- ko if: (element[fc_attribute].value == 'local_no_inscripto' || element[fc_attribute] == 'local_no_inscripto') -->
+    Local No Inscripto
+    <!-- /ko -->
+    <!-- ko if: (element[fc_attribute].value == 'multilateral_no_inscripto' || element[fc_attribute] == 'multilateral_no_inscripto') -->
+    Multilateral No Inscripto
+    <!-- /ko -->
+    <br/>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: (address().isEditable()) -->
+    <button type="button"
+            class="action edit-address-link"
+            data-bind="click: onEditAddressClick, visible: address().isEditable()">
+        <span data-bind="i18n: 'Edit Address'"></span>
+    </button>
+    <!-- /ko -->
+    <!-- ko ifnot: isSelected -->
+    <button type="button" data-bind="click: onSelectAddressClick" class="action action-select-shipping-item">
+        <span data-bind="i18n: 'Ship Here'"></span>
+    </button>
+    <!-- /ko -->
+</li>

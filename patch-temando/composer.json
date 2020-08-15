@@ -1,0 +1,17 @@
+{
+  "name": "combinatoria/patch-temando",
+  "description": "Fix for address extension attributes issue with Temando_Shipping",
+  "type": "magento2-module",
+  "version": "1.0.1",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageFix\\Temando\\": ""
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<!-- ko ifnot: isCustomerLoggedIn() -->
+<div class="email">
+    <!-- ko foreach: getRegion('before-login-form') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+    <form class="form form-login"
+          data-role="email-with-possible-login"
+          data-bind="submit: login"
+          method="post">
+        <fieldset id="customer-email-fieldset" class="fieldset" data-bind="blockLoader: isLoading">
+            <div class="field-row">
+                <div class="field field-email required" data-bind="mageInit: {'awOscFloatLabel': {}}">
+                    <label class="label" for="customer-email">
+                        <span data-bind="i18n: 'Email'"></span>
+                    </label>
+                    <div class="control">
+                        <input class="input-text"
+                               type="email"
+                               data-bind="textInput: email,hasFocus: emailFocused"
+                               name="username"
+                               data-validate="{required:true, 'validate-email':true}"
+                               id="customer-email"
+                               autocomplete="off"/>
+                        <!-- ko template: 'ui/form/element/helper/tooltip' --><!-- /ko -->
+                    </div>
+                </div>
+                <div class="field fl-auth-message" data-bind="fadeVisible: isPasswordVisible, mageInit: {'awOscFloatLabel': {}}">
+                    <div class="control authentication-message">
+                        <span>Hola, comprá más rápido identificándote <a id="authPopupLink" style="cursor:pointer;"><span> <!-- ko i18n: 'here'--><!-- /ko --></span></a></span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<!-- /ko -->

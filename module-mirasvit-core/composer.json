@@ -1,0 +1,24 @@
+{
+  "name": "combinatoria/module-mirasvit-core",
+  "description": "Mirasvit Core (Core, Report, ReportApi)",
+  "type": "magento2-component",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mirasvit\\Core\\": "src/Core",
+      "Mirasvit\\Report\\": "src/Report",
+      "Mirasvit\\ReportApi\\": "src/ReportApi"
+    },
+    "files": [
+      "src/Core/registration.php",
+      "src/Report/registration.php",
+      "src/ReportApi/registration.php"
+    ]
+  }
+}

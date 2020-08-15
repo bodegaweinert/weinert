@@ -1,0 +1,480 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Aheadworks_OneStepCheckout:etc/osc_attribute_customization.xsd">
+    <address type="billing">
+        <attribute code="prefix">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="firstname">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="middlename">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="lastname">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="suffix">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="dni">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="dob">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="street">
+            <item index="0">
+                <metadata>
+                    <field name="required">
+                        <editable>false</editable>
+                    </field>
+                    <field name="visible">
+                        <editable>false</editable>
+                    </field>
+                </metadata>
+            </item>
+            <item index="1">
+                <metadata>
+                    <field name="required">
+                        <editable>true</editable>
+                    </field>
+                    <field name="visible">
+                        <editable>true</editable>
+                    </field>
+                </metadata>
+            </item>
+        </attribute>
+        <attribute code="street_number">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="street_floor">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="street_apartment">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="city">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="country_id">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="region">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="region_id">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="postcode">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="telephone">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="company">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="fax">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="vat_id">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+    </address>
+    <address type="shipping">
+        <attribute code="prefix">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="firstname">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="middlename">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="lastname">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="suffix">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="dni">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="dob">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="street">
+            <item index="0">
+                <metadata>
+                    <field name="required">
+                        <editable>false</editable>
+                    </field>
+                    <field name="visible">
+                        <editable>false</editable>
+                    </field>
+                </metadata>
+            </item>
+            <item index="1">
+                <metadata>
+                    <field name="required">
+                        <editable>true</editable>
+                    </field>
+                    <field name="visible">
+                        <editable>true</editable>
+                    </field>
+                </metadata>
+            </item>
+        </attribute>
+        <attribute code="street_number">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="street_floor">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="street_apartment">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="city">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="country_id">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="region">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="region_id">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="postcode">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="telephone">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="company">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="fax">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="vat_id">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+    </address>
+    <address type="business">
+        <attribute code="require_invoice">
+            <metadata>
+                <field name="required">
+                    <editable>false</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="cuit">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>false</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="business_name">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+        <attribute code="convenio">
+            <metadata>
+                <field name="required">
+                    <editable>true</editable>
+                </field>
+                <field name="visible">
+                    <editable>true</editable>
+                </field>
+            </metadata>
+        </attribute>
+    </address>
+</config>

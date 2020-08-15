@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="biztech" translate="label" sortOrder="300">
+			<label>Biztech</label>
+		</tab>
+		<section id="easymaintenance" showInDefault="1" showInWebsite="1" showInStore="1">
+			<tab>biztech</tab>
+			<label>Easy Site Maintenance</label>
+			<resource>Biztech_Easymaintenance::config_easymaintenance</resource>
+			<!--<group id="activation"  showInDefault="1">-->
+				<!--<label>Easy Maintenance Activation</label>-->
+				<!--<field id="key" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">-->
+					<!--<label>Activation Key</label>-->
+					<!--<validate>required-entry</validate>-->
+				<!--</field>-->
+				<!--<field id="websites" translate="label" type="checkbox" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">-->
+					<!--<label>Select Websites</label>-->
+					<!--<source_model>Magento\Config\Model\Config\Source\Website</source_model>-->
+					<!--<frontend_model>Biztech\Easymaintenance\Block\Adminhtml\Config\Form\Renderer\Website</frontend_model>-->
+				<!--</field>-->
+			<!--</group>-->
+
+			<group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Maintenance Configuration</label>
+				<!--<field id="is_active" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="0">-->
+					<!--<label>Activation</label>-->
+					<!--&lt;!&ndash;<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>&ndash;&gt;-->
+					<!--<source_model>Biztech\Easymaintenance\Model\Config\Source\Enabledisable</source_model>-->
+					<!--<frontend_model>Biztech\Easymaintenance\Block\Adminhtml\Enabledisable</frontend_model>-->
+				<!--</field>-->
+
+				<field id="is_enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Site Maintenance</label>
+					<comment><![CDATA[Enable or Disable Site Maintenance]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<!-- <depends>
+						<field id="is_active">1</field>
+					</depends> -->
+				</field>
+
+				<field id="allowforadmin" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label> Allow Frontend for Admin </label>
+					<comment> Frontend is allowed for logged admin user </comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="page_title" translate="label" type="text" sortOrder="3" showInStore="1" showInWebsite="1" showInDefault="1">
+					<label>Page Title </label>
+					<comment>Add Site Maintenance Page Title</comment>
+					<validate>validate-alphanum-with-spaces</validate>
+				</field>
+
+				<field id="allowedIPs" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Allowed IPs</label>
+					<comment>IPs that can access Site</comment>
+					<backend_model>Magento\Developer\Model\Config\Backend\AllowedIps</backend_model>
+				</field>
+
+				<field id="logFileName" translate="label" type="text" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1">
+					<label>Log File</label>
+					<comment>Create log file to know who accessed while site is under maintenance mode.</comment>
+				</field>
+
+				<field id="logo" translate="label comment" type="image" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Logo</label>
+					<comment>Allowed file types: jpeg, gif, png.</comment>
+					<backend_model>Biztech\Easymaintenance\Model\Config\Backend\Image</backend_model>
+					<upload_dir config="system/filesystem/media" scope_info="1">easymaintenance</upload_dir>
+					<base_url type="media" scope_info="1">easymaintenance</base_url>
+				</field>
+
+				<field id="logo_height" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Logo Height</label>
+					<comment>Enter logo height for slider(ex. 80)</comment>
+					<validate>validate-number</validate>
+				</field>
+
+				<field id="logo_width" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Logo Width</label>
+					<comment>Enter logo Width for slider(ex. 80)</comment>
+					<validate>validate-number</validate>
+				</field>
+
+				<field id="background_image" translate="label comment" type="image" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Background Image</label>
+					<comment>Allowed file type: jpeg, gif, png.</comment>
+					<backend_model>Biztech\Easymaintenance\Model\Config\Backend\Image</backend_model>
+					<upload_dir config="system/filesystem/media" scope_info="1">easymaintenance</upload_dir>
+					<base_url type="media" scope_info="1">easymaintenance</base_url>
+				</field>
+
+				<field id="redirect_url" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>ByPass URL</label>
+					<comment>Admin can allow access to specific URL for their customer if added here. Write each URL in new line (For e.g. /api/soap, /contacts/)</comment>
+				</field>
+
+				<field id="maintenance_html" translate="label" type="editor" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Maintenance Page HTML</label>
+					<comment>Show this HTML content when site is under maintenance</comment>
+					<frontend_model>Biztech\Easymaintenance\Block\Adminhtml\System\Config\Editor</frontend_model>
+				</field>
+			</group>
+
+			<group id="timer" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Timer Configuration</label>
+
+				<field id="timer_enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Timer?</label>
+					<comment>Enable or Disable Timer</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="site_enabled" translate="label" type="select" sortOrder="2" showInStore="1" showInWebsite="1" showInDefault="1">
+					<label>Make site live when Timer expires</label>
+					<comment>Select Yes to make site live when timer expires</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="timer_text" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Timer Text</label>
+					<comment>Add text for timer</comment>
+				</field>
+
+				<field id="timer_start_date" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Start Date</label>
+					<comment>Add Date for Start Timer</comment>
+					<frontend_model>Biztech\Easymaintenance\Block\Adminhtml\System\Config\Date</frontend_model>
+					<validate>required-entry</validate>
+					<depends>
+						<field id="timer_enabled">1</field>
+					</depends>
+				</field>
+
+				<field id="timer_end_date" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>End Date</label>
+					<comment>Add End Date for Set Timer</comment>
+					<frontend_model>Biztech\Easymaintenance\Block\Adminhtml\System\Config\Date</frontend_model>
+					<validate>required-entry</validate>
+					<depends>
+						<field id="timer_enabled">1</field>
+					</depends>
+				</field>
+
+				<field id="timer_start_hour" translate="label" type="time" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Start Time</label>
+					<validate>required-entry</validate>
+					<depends>
+						<field id="timer_enabled">1</field>
+					</depends>
+				</field>
+
+				<field id="timer_end_hour" translate="label" type="time" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>End Time</label>
+					<validate>required-entry</validate>
+					<depends>
+						<field id="timer_enabled">1</field>
+					</depends>
+				</field>
+
+			<!-- <field id="timer_alert" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Alert Hours</label>
+					<source_model>Biztech\Easymaintenance\Model\Config\Source\AlertTimer</source_model>
+					<comment>Add Hours to notify when timer comes to end</comment>
+				</field>
+
+				<field id="timer_email" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Recipient Email</label>
+					<validate>validate-email</validate>
+					<comment></comment>
+				</field>
+
+				<field id="timer_email_template" translate="label" type="textarea" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Email Template Content</label>
+					<comment></comment>
+				</field>
+ 			-->
+			</group>
+
+			<group id="contactus" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Contact Us Configuration</label>
+
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="from_mail" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Recipient Email</label>
+					<validate>validate-email required-entry</validate>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+					<comment></comment>
+				</field>
+			</group>
+
+			<group id="notify" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Notify Configuration</label>
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="title" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Notify Title</label>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+					<comment></comment>
+				</field>
+
+				<field id="message" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Notify Message</label>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+					<comment></comment>
+				</field>
+
+				<field id="template" translate="label" type="textarea" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Email Template Content</label>
+					<validate>required-entry</validate>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+					<comment>Please enter email template content</comment>
+				</field>
+			</group>
+
+		</section>
+	</system>
+</config>

@@ -1,0 +1,16 @@
+<!--@subject {{var store.getFrontendName()}} User Notification @-->
+<!--@vars
+{"var data"
+}
+@-->
+{{template config_path="design/email/header_template"}}
+
+    Dear User,
+    <br />
+    {{var template}}
+    <br />
+    <br />
+    Thanks ,
+    {{var store_info}}
+
+{{template config_path="design/email/footer_template"}}

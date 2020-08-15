@@ -1,0 +1,226 @@
+<?php
+$themeCode = $this->getThemeData()['code'];
+
+/*
+ * Normal Javascript and Prototype JS issue with timezone
+ */
+$bgImage = $this->getConfigValue('easymaintenance/general/background_image');
+if (isset($bgImage) && $bgImage != null) {
+    // $imagePath = $this->getControllerUrl('pub/media/easymaintenance') . $bgImage;
+    $folderName = 'easymaintenance';
+    $imagePath = $this->getMediaUrl() . '/' . $folderName . '/' . $bgImage;
+}
+
+$logoImage = $this->getConfigValue('easymaintenance/general/logo');
+if (isset($logoImage) && !is_null($logoImage)) {
+    // $logoPath = $this->getControllerUrl('pub/media/easymaintenance') . $logoImage;
+    // $logoPath = $this->getControllerUrl('pub/media/easymaintenance') . $logoImage;
+    $folderName = 'easymaintenance';
+    $logoPath = $this->getMediaUrl() . '/' . $folderName . '/' . $logoImage;
+}
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <?php
+            if ($this->getConfigValue('easymaintenance/general/page_title') != '') {
+                echo strip_tags($this->getConfigValue('easymaintenance/general/page_title'), NULL);
+            } else {
+                echo __('Site Maintenance');
+            }
+            $block->getStoreId();
+            ?>
+        </title>
+        <?php
+        $folderName = 'favicon';
+        $storeFavicon = $this->getConfigValue('design/head/shortcut_icon');
+        $storefaviconPath = $this->getControllerUrl('pub/media/' . $folderName) . $storeFavicon;
+        $absolutePath = $this->getMediaDir() . '/' . $folderName . '/' . $storeFavicon;
+
+        if (!is_null($storeFavicon) && is_file($absolutePath)) {
+            $faviconUrl = $storefaviconPath;
+        } else {
+            $faviconUrl = $this->getViewFileUrl('favicon.ico');
+        }
+        ?>
+
+        <script>
+            var require = {
+                "baseUrl": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('/', ['theme' => $themeCode]) ?>"
+            };
+        </script>
+
+        <script type="text/javascript" src="<?php echo $this->getViewFileUrl('requirejs/require.js' , ['theme' => $themeCode]); ?>"></script>
+        <script type="text/javascript" src="<?php echo $this->getViewFileUrl('mage/requirejs/mixins.js' , ['theme' => $themeCode]); ?>"></script>
+        <script type="text/javascript" src="<?php echo $this->getRequireConfig(); ?>"></script>
+
+        <link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="<?php echo $this->getViewFileUrl('css/styles-l.css', ['theme' => $themeCode]); ?>">
+        <link rel="stylesheet" type="text/css" media="all" href="<?php echo $this->getViewFileUrl('css/styles-m.css', ['theme' => $themeCode]); ?>">
+
+        <link rel="stylesheet" type="text/css" media="all" href="<?php echo $this->getViewFileUrl('Biztech_Easymaintenance::css/easymaintenance.css', ['theme' => $themeCode]); ?>">
+
+        <link rel="icon" href="<?php echo $faviconUrl; ?>" type="image/x-icon" />
+        <link rel="shortcut icon" href="<?php echo $faviconUrl; ?>" type="image/x-icon" />
+
+        <?php if ($this->getConfigValue('easymaintenance/contactus/active') || $this->getConfigValue('easymaintenance/notify/active')) : ?>
+            <link rel="stylesheet" type="text/css" media="all" href="<?php echo $this->getViewFileUrl('Biztech_Easymaintenance/css/popup.css', ['theme' => $themeCode]) ?>">
+            <script type="text/javascript" src="<?php echo $this->getViewFileUrl('Biztech_Easymaintenance/js/popup.js', ['theme' => $themeCode]) ?>"></script>
+        <?php endif; ?>
+
+        <?php if (isset($imagePath)) : ?>
+            <style type="text/css">
+                body {
+                    background-image : url("<?php echo $imagePath; ?>");
+                    background-position: center;
+                    background-size: cover;
+                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="<?php echo $imagePath ?>", sizingMethod="scale");
+                    -ms-filter : "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $imagePath ?>',sizingMethod='scale');"
+                }
+            </style>
+        <?php endif; ?>
+    </head>
+    <body onLoad="countdown(year, month, day, hour, minute)">
+
+        <div class="main-container">
+            <?php
+            if ($this->getConfigValue('easymaintenance/general/logo')) :
+                $width = $this->getConfigValue('easymaintenance/general/logo_width');
+                if (!$width) {
+                    $width = 80;
+                }
+                $height = $this->getConfigValue('easymaintenance/general/logo_height');
+                if (!$height) {
+                    $height = 80;
+                }
+                ?>
+                <div>
+                    <img height="<?php echo $height; ?>px" width="<?php echo $width; ?>" src="<?php echo $logoPath; ?>" alt="Easymaintenance Logo">
+                </div>
+            <?php endif; ?>
+
+            <?php
+            $maintenanceHtml = $this->getConfigValue('easymaintenance/general/maintenance_html');
+            echo $this->getFilterContent($maintenanceHtml);
+            ?>
+            <?php if ($this->getConfigValue('easymaintenance/timer/timer_enabled')) : ?>
+
+                <?php
+                $date = $this->getConfigValue('easymaintenance/timer/timer_end_date');
+                $timeZone = $this->getTimezone();
+                $formatedDate = date('Y/m/d', strtotime($date));
+
+                $time = $this->getConfigValue('easymaintenance/timer/timer_end_hour');
+
+                $formatedTime = str_replace(',', ':', $time);
+                date_default_timezone_set($this->getTimezone());
+
+                $current_date = date("F d, Y H:i:s", strtotime($this->getCurrentdate('F d, Y H:i:s', $timeZone)));
+
+                $end_date_time = $formatedDate . ' ' . $formatedTime;
+                ?>
+
+
+                <?php
+                $date = explode('/', $formatedDate);
+                $year = $date[2];
+                $month = $date[0];
+                $day = $date[1];
+
+                $time = explode(':', $formatedTime);
+                $hour = $time[0];
+                $min1 = $time[1];
+
+                $day = floor($min1 / 1440);
+                $hour1 = floor(($min1 - $day * 1440) / 60);
+                $min = $min1 - ($day * 1440) - ($hour1 * 60);
+
+                $finaldate = date('m/d/Y', strtotime($formatedDate . ' + ' . $day . ' days'));
+                $date = explode('/', $finaldate);
+                $year = $date[2];
+                $month = $date[0];
+                $day = $date[1];
+                $hour += $hour1;
+                ?>
+
+                <script type="text/javascript" src="<?php echo $this->getViewFileUrl('prototype/prototype.js'); ?>"></script>
+                <script>
+                var current = 'Time is over !';
+                var year = '<?php echo $year; ?>';
+                var month = '<?php echo $month; ?>';
+                var day = '<?php echo $day ?>';
+                var hour = '<?php echo $hour; ?>';
+                var minute = '<?php echo $min; ?>';
+
+                var montharray = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+                var current_date = '<?php echo $current_date; ?>';
+
+                function countdown(yr, m, d, hr, min) {
+                    theyear = yr;
+                    themonth = m;
+                    theday = d;
+                    thehour = hr;
+                    theminute = min;
+
+                    var offsetdate = new Date(current_date);
+                    var offset = -(offsetdate.getTimezoneOffset() / 60);
+                    var localeDate = new Date(new Date().getTime() + offset * 3600 * 1000).toUTCString().replace(/ GMT$/, "")
+
+                    var today = new Date(localeDate);
+
+                    var todayy = today.getYear();
+                    if (todayy < 1000)
+                        todayy += 1900;
+                    var todaym = today.getMonth();
+                    var todayd = today.getDate();
+                    var todayh = today.getHours();
+                    var todaymin = today.getMinutes();
+                    var todaysec = today.getSeconds();
+                    var todaystring = montharray[todaym] + " " + todayd + ", " + todayy + " " + todayh + ":" + todaymin + ":" + todaysec;
+                    var futurestring = montharray[m - 1] + " " + d + ", " + yr + " " + hr + ":" + min + ":" + "00";
+                    var dd = Date.parse(futurestring) - Date.parse(todaystring);
+                    var dday = Math.floor(dd / (60 * 60 * 1000 * 24) * 1);
+                    var dhour = Math.floor((dd % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
+                    var dmin = Math.floor(((dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
+                    var dsec = Math.floor((((dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
+                    if (dday <= 0 && dhour <= 0 && dmin <= 0 && dsec <= 0) {
+                        jQuery('#timer-text').hide();
+                        jQuery('#timer-table').hide();
+                    }
+                    if (dday == 0 && dhour == 0 && dmin == 0 && dsec == 0)
+                    {
+                        var url = '<?php echo $this->getControllerUrl('easymaintenance/indexcontroller/checktimer'); ?>';
+                        new Ajax.Request(url, {
+                            onSuccess: function (data) {
+                                if (data.responseText !== null) {
+                                    window.location.reload();
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        document.getElementById('count2').style.display = "none";
+                        document.getElementById('dday').innerHTML = dday;
+                        document.getElementById('dhour').innerHTML = dhour;
+                        document.getElementById('dmin').innerHTML = dmin;
+                        document.getElementById('dsec').innerHTML = dsec;
+                        setTimeout('countdown(theyear, themonth, theday, thehour, theminute)', 1000);
+                    }
+                }
+                </script>
+                <div class="countdown" >
+                    <div class="message clearfix" id="timer-text">
+                        <?php $text = $this->getConfigValue('easymaintenance/timer/timer_text'); ?>
+                        <h2 id="launch-text"> <?php echo $text; ?> </h2>
+                    </div>
+                    <div class="timer" id="timer-table">
+                        <div class="numbers" id="count2" style="padding: 5px 0 0 0; "></div>
+                        <div><strong id="dday"></strong><?php echo __('Days'); ?></div>
+                        <div><strong id="dhour"></strong><?php echo __('Hours'); ?></div>
+                        <div><strong id="dmin"></strong><?php echo __('Minutes'); ?></div>
+                        <div class="last"><strong id="dsec"></strong><?php echo __('Seconds'); ?></div>
+                    </div>
+                </div>
+            <?php endif; ?>
+                
+        </div>

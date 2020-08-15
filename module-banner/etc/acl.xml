@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                    <resource id="Combinatoria_Banner::combinatoria_banner_section" title="Banner" sortOrder="10" >
+                        <resource id="Combinatoria_Banner::combinatoria_banner_banners" title="Banner Configuration" sortOrder="10" />
+
+                        <resource id="Combinatoria_Banner::save" title="Edit Banner" sortOrder="10" />
+                        <resource id="Combinatoria_Banner::delete" title="Delete Banner" sortOrder="10" />
+                    </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

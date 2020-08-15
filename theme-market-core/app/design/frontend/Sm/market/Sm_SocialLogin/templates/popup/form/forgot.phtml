@@ -1,0 +1,41 @@
+<?php
+/**
+ *
+ * SM Social Login - Version 1.0.0
+ * Copyright (c) 2017 YouTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * Author: YouTech Company
+ * Websites: http://www.magentech.com
+ */
+?>
+
+<div class="social-login-type block-container forgot" style="display:none">
+    <div class="social-login-title">
+        <h2 class="forgot-pass-title"><?php echo __('Forgot Password') ?></h2>
+    </div>
+    <div class="block col-mgt mgt-12">
+        <div class="block-content">
+            <form class="form-password-forget" id="social-form-password-forget" data-mage-init='{"validation":{}}'>
+                <fieldset class="fieldset" data-hasrequired="<?php echo __('* Required Fields') ?>">
+                    <div class="field note"><?php echo __('Please enter your email address below to receive a password reset link.'); ?></div>
+                    <div class="field email required">
+                        <label for="email_address_2" class="label"><span><?php echo __('Email') ?></span></label>
+                        <div class="control">
+                            <input type="email" name="email" alt="email" id="email_address_2" class="input-text" value="<?php echo $block->escapeHtml($block->getEmailValue()) ?>" data-validate="{required:true, 'validate-email':true}"/>
+                        </div>
+                    </div>
+					<?php echo $block->getChildHtml('form_additional_info'); ?>
+					<?php echo $block->getChildHtml('forgot.captcha'); ?>
+                </fieldset>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="button" class="action send primary"><span><?php echo __('Submit') ?></span></button>
+                    </div>
+                    <div class="secondary">
+                        <a class="action back" href="#"><span><?php echo __('Go back') ?></span></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

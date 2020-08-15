@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$_config  = $this->helper('Sm\Market\Helper\Data');
+$id = $_config->getProductDetail('addthis_id');
+$class = $_config->getProductDetail('addthis_class');
+?>
+
+<div id="addthis_wrap">
+	<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?=$id?>"></script>
+	<!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="<?=$class?>"><span style="line-height: 24px">Compartir:&nbsp;</span> </div>
+</div>

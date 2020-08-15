@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SM Social Login - Version 1.0.0
+ * Copyright (c) 2017 YouTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * Author: YouTech Company
+ * Websites: http://www.magentech.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sociallogin>
+            <general>
+                <is_enabled>1</is_enabled>
+                <link_trigger>.header .links, .section-item-content .header.links</link_trigger>
+                <popup_login>1</popup_login>
+                <popup_effect>mfp-move-from-top</popup_effect>
+            </general>
+        </sociallogin>
+    </default>
+</config>

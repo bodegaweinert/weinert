@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <!-- <resource id="Magento_Adminhtml::admin">
+                <resource id="Biztech_Easymaintenance::notification" title="notification" sortOrder="100"/> -->
+                <!--AddMenuAcl-->
+            <!-- </resource> -->
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+
+                    <resource id="Biztech_Easymaintenance::notification" title="notification" sortOrder="100"/>
+
+
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Biztech_Easymaintenance::config_easymaintenance" title="Easy Site Maintenance" sortOrder="80" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

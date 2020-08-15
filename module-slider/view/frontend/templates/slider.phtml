@@ -1,0 +1,6 @@
+<?php $sliders = $this->getSliderCollection() ?>
+<?php if(is_array($sliders)): ?>
+    <?php foreach($sliders as $slide):?>
+        <div class="item"><a href="<?php echo $slide['link'] ?>"><img class="owl-lazy" data-src="<?php echo $this->getMediaDirectory().$slide['image'] ?>" alt="<?php echo $slide['alt'] ?>" /></a></div>
+    <?php endforeach;?>
+<?php endif; ?>

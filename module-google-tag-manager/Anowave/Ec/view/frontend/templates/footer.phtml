@@ -1,0 +1,102 @@
+<script>
+
+	if (typeof dataLayer !== "undefined")
+	{
+		<?php foreach ([$block->getHelper()->getContactEvent(), $block->getHelper()->getNewsletterEvent(), $block->getHelper()->getCartUpdateEvent()] as $event): ?>
+
+			<?php if ($event): ?>
+			
+			(function(dataLayer, data)
+			{
+				dataLayer.push(data);
+				
+			})(dataLayer,<?php echo $event ?>);
+
+			<?php endif ?>
+		
+		<?php endforeach ?>
+
+		for (a = 0, b = EC.length; a < b; a++)
+		{
+			EC[a].apply(this,[dataLayer]);
+		}
+
+		/* AdWords Remarketing */
+		if (window.google_tag_params)
+		{
+			(function(callback)
+			{
+				if (AEC.Const.COOKIE_DIRECTIVE)
+				{
+					if (!AEC.Const.COOKIE_DIRECTIVE_CONSENT_GRANTED)
+					{
+						AEC.CookieConsent.queue(callback);
+					}
+					else
+					{
+						callback.apply(window,[]);
+					}
+				}
+				else 
+				{
+					callback.apply(window,[]);
+				}
+			})
+			(
+				(function(dataLayer)
+				{
+					return function()
+					{
+						AEC.Cookie.remarketing({'event':'fireRemarketingTag', 'google_tag_params':window.google_tag_params}).push(dataLayer);
+					}
+				})(dataLayer)
+			);
+		}
+
+		if (typeof FB !== 'undefined') 
+		{
+			FB.Event.subscribe('edge.create',function(href) 
+		 	{
+				dataLayer.push(
+				{
+					'event': 			'socialInt',
+					'socialNetwork': 	'Facebook',
+					'socialAction': 	'Like',
+					'socialTarget': 	href
+				});
+			});
+		}
+
+		window.sendPlus = function(g)
+		{
+		    dataLayer.push(
+			{
+		        'event': 			'socialInt',
+		        'socialNetwork': 	'Google',
+		        'socialAction': 	'+1',
+		        'socialTarget': 	g.href
+		    });
+		};
+
+		if (typeof twttr !== 'undefined') 
+		{
+			twttr.ready(function (twttr) 
+			{
+				twttr.events.bind('click', function()
+				{
+					dataLayer.push(
+					{
+						'event': 			'socialInt',
+						'socialNetwork': 	'Twitter',
+						'socialAction': 	'tweet',
+						'socialTarget': 	window.location.href
+					});
+				}); 
+			});
+		}
+	}
+	else
+	{
+		log('dataLayer[] is not intialized. Check if GTM is installed properly');
+	}
+</script>

@@ -1,0 +1,135 @@
+<!-- ko if: isShown -->
+<li class="aw-onestep-groups_item shipping-method">
+    <div class="group-title">
+        <h2><span class="mark"></span><span data-bind="i18n: 'Shipping method'"></span></h2>
+    </div>
+    <div class="group-content">
+        <div class="onestep-shipping-method" data-bind="blockLoader: isLoading">
+            <!-- ko if: rates().length  -->
+            <form class="form" novalidate="novalidate">
+                <div id="checkout-shipping-method-load">
+                    <div class="onestep-shipping-method-list">
+                    <!--ko foreach: { data: rates(), as: 'method'}-->
+                        <!-- ko if: (method.carrier_code == 'andreanisucursal') -->
+                        <div class="shipping-method-card field choice">
+                            <div class="shipping-method-title">
+                                <!-- ko ifnot: method.error_message -->
+                                <input class="radio"
+                                       type="radio"
+                                       data-bind="
+                                        value: method.carrier_code + '_' + method.method_code,
+                                        checked: $parent.isSelected,
+                                        attr: {
+                                            'id': 's_method_' + method.carrier_code + '_' + method.method_code,
+                                            'aria-labelledby': 'label_method_' + method.method_code + '_' + method.carrier_code + ' ' + 'label_carrier_' + method.method_code + '_' + method.carrier_code
+                                        },
+                                        click: $parent.selectShippingMethod"/>
+                                <!-- /ko -->
+                                <!-- ko if: method.error_message -->
+                                <div class="clearfix"></div>
+                                <!-- /ko -->
+                                <label data-bind="
+                                                attr: {
+                                                'id': 'label_method_' + method.method_code + '_' + method.carrier_code,
+                                                'for': 's_method_' + method.carrier_code + '_' + method.method_code
+                                                }
+                                        " class="label"><!-- ko text: method.carrier_title --><!-- /ko --></label>
+                                <div class="shipping-method-subtitle" data-bind="
+                                attr: {'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code}">Envío a sucursal</div>
+                            </div>
+                            <div class="shipping-method-price andreanisucursal-price">
+                                <span class="price"></span>
+                            </div>
+                        </div>
+
+                        <div class="row retiro-sucursal-row" style="display: none">
+                            <div style="border: none;width:100%;margin-left: 10px">
+
+                                <!--<select id="andreanisucursal-provincia" data-bind="options: $parent.provinciasDisponibles, optionsText: 'nombre',-->
+                                        <!--optionsValue: 'provincia_id', value: $parent.provinciaSeleccionada, optionsCaption: 'Seleccione una provincia',-->
+                                        <!--event:{change:$parent.getLocalidades()}" style="margin-bottom: 25px">-->
+                                <!--</select>-->
+
+                                <select id="andreanisucursal-localidad" data-bind="options: $parent.localidadesDisponibles,optionsText: 'localidad',
+                                        optionsValue: 'codigo_postal_id',value: $parent.localidadSeleccionada, optionsCaption: 'Seleccione una localidad',
+                                        event:{change:$parent.getSucursales()}" style="margin-bottom: 25px" >
+                                </select>
+
+                                <div id="sucursal_andreani">
+                                    <div class='field-row'>
+                                        <div class='field _required fl-label fl-label-state'>
+                                            <div class='control'>
+                                                <label class='label' for='andreanisucursal-sucursal'><span>Sucursal</span></label>
+
+                                                <select class='select' id="andreanisucursal-sucursal" data-bind="options: $parent.sucursalesAndreaniDisponibles, optionsValue: 'Sucursal',
+                                       optionsText: 'Direccion', value: $parent.sucursalAndreaniSeleccionada, optionsCaption: 'Seleccione una sucursal de retiro',
+                                       event:{change:$parent.cotizacionAndreaniSucursal()}" >
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- , attr:{'data-sucursal-id':''} -->
+                                <div class="localidad-sin-sucursales" style="display: none">
+                                    <p>No se encontraron sucursales Andreani en la localidad seleccionada.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- ko ifnot: (method.carrier_code == 'andreanisucursal') -->
+                            <div class="shipping-method-card field choice">
+                                <div class="shipping-method-title">
+                                    <!-- ko ifnot: method.error_message -->
+                                    <input class="radio"
+                                               type="radio"
+                                               data-bind="
+                                        value: method.carrier_code + '_' + method.method_code,
+                                        checked: $parent.isSelected,
+                                        attr: {
+                                            'id': 's_method_' + method.carrier_code + '_' + method.method_code,
+                                            'aria-labelledby': 'label_method_' + method.method_code + '_' + method.carrier_code + ' ' + 'label_carrier_' + method.method_code + '_' + method.carrier_code
+                                        },
+                                        click: $parent.selectShippingMethod"/>
+                                    <!-- /ko -->
+                                    <!-- ko if: method.error_message -->
+                                    <div class="clearfix"></div>
+                                    <!-- /ko -->
+                                        <label data-bind="
+                                                attr: {
+                                                'id': 'label_method_' + method.method_code + '_' + method.carrier_code,
+                                                'for': 's_method_' + method.carrier_code + '_' + method.method_code
+                                                }
+                                        " class="label"><!-- ko text: method.carrier_title --><!-- /ko --></label>
+                                        <div class="shipping-method-subtitle" data-bind="
+                                text: method.method_title,
+                                attr: {'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code}"></div>
+                                </div>
+                                <div class="shipping-method-price">
+                                <!-- ko foreach: $parent.getRegion('price') -->
+                                <!-- ko template: getTemplate() --><!-- /ko -->
+                                <!-- /ko -->
+                                </div>
+                            </div>
+                        <!-- /ko -->
+                    <!-- /ko -->
+                    </div>
+                </div>
+                <!-- ko if: errorValidationMessage().length > 0 -->
+                <div class="message notice">
+                    <span><!-- ko text: errorValidationMessage()--><!-- /ko --></span>
+                </div>
+                <!-- /ko -->
+            </form>
+            <!-- /ko -->
+            <!-- ko ifnot: rates().length > 0 -->
+            <div class="no-quotes-block"><!-- ko i18n: 'Sorry, no quotes are available for this order at this time'--><!-- /ko --></div>
+            <!-- /ko -->
+        </div>
+        <!-- ko foreach: getRegion('delivery-date') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </div>
+</li>
+<!-- /ko -->

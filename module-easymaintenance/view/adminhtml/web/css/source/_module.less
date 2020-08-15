@@ -1,0 +1,16 @@
+@biztechEasy-icons-admin__font-name-path: '@{baseDir}Biztech_Easymaintenance/fonts/notification';
+@biztechEasy-icons-admin__font-name : 'BiztechEasy';
+.lib-font-face(
+	@family-name:@biztechEasy-icons-admin__font-name,
+	@font-path: @biztechEasy-icons-admin__font-name-path,
+	@font-weight: normal,
+	@font-style: normal
+);
+.admin__menu .item-notification.level-0 > a:before {
+	font-family: @biztechEasy-icons-admin__font-name;
+	content: "\e991";
+}
+
+.admin__menu .item-notification.level-0 > a > span {
+	font-size: 9px;
+}

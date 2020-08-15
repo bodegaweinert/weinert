@@ -1,0 +1,288 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Aheadworks\OneStepCheckout\Block\Customer\Address\Edit $block */
+?>
+<?php $_company = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Company') ?>
+<?php $_telephone = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Telephone') ?>
+<?php $_fax = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Fax') ?>
+<form class="form-address-edit"
+      action="<?= $block->escapeUrl($block->getSaveUrl()) ?>"
+      method="post"
+      id="form-validate"
+      enctype="multipart/form-data"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Contact Information')) ?></span></legend><br>
+        <?= $block->getBlockHtml('formkey') ?>
+        <input type="hidden" name="success_url" value="<?= $block->escapeUrl($block->getSuccessUrl()) ?>">
+        <input type="hidden" name="error_url" value="<?= $block->escapeUrl($block->getErrorUrl()) ?>">
+        <?= $block->getNameBlockHtml() ?>
+
+        <?php
+        $dni = ($block->getAddress()->getCustomAttribute('dni'))?$block->getAddress()->getCustomAttribute('dni')->getValue():'';
+        ?>
+
+        <div class="field field-name-firstname required">
+            <label class="label" for="dni">
+                <span>DNI</span>
+            </label>
+            <div class="control">
+                <input type="text" id="dni" name="dni" title="DNI" class="input-text required-entry validate-digits"
+                       value="<?php echo $dni;?>" maxlength="8" minlength="7">
+            </div>
+        </div>
+
+        <?php if ($_telephone->isEnabled()): ?>
+            <?= $_telephone->setTelephone($block->getAddress()->getTelephone())->toHtml() ?>
+        <?php endif ?>
+
+
+
+    </fieldset>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Address')) ?></span></legend><br>
+        <?php $_streetValidationClass = $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('street'); ?>
+        <div class="field street required">
+            <label for="street_1" class="label">
+                <span><?= $block->escapeHtml(__('Street')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text"
+                       name="street[]"
+                       value="<?= $block->escapeHtmlAttr($block->getStreetLine(1)) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Street')) ?>"
+                       id="street_1"
+                       class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>"/>
+            </div>
+        </div>
+
+        <?php
+
+        $streetNumber = ($block->getAddress()->getCustomAttribute('street_number')) ? $block->getAddress()->getCustomAttribute('street_number')->getValue():'';
+        $streetFloor = ($block->getAddress()->getCustomAttribute('street_floor')) ? $block->getAddress()->getCustomAttribute('street_floor')->getValue():'';
+        $streetApartment = ($block->getAddress()->getCustomAttribute('street_apartment')) ? $block->getAddress()->getCustomAttribute('street_apartment')->getValue():'';
+
+        ?>
+
+        <div class="field street_number required">
+            <label class="label" for="street_number"><span><?= $block->escapeHtml(__('Street Number')) ?></span></label>
+            <div class="control">
+                <input type="text"
+                       name="street_number"
+                       value="<?= $block->escapeHtmlAttr($streetNumber) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Street Number')) ?>"
+                       class="input-text required-entry validate-digits"
+                       id="street_number">
+            </div>
+        </div>
+        <div class="field street_floor">
+            <label class="label" for="street_floor"><span><?= $block->escapeHtml(__('Street Floor')) ?></span></label>
+            <div class="control">
+                <input type="text"
+                       name="street_floor"
+                       value="<?= $block->escapeHtmlAttr($streetFloor) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Street Floor')) ?>"
+                       class="input-text"
+                       id="street_floor">
+            </div>
+        </div>
+        <div class="field street_apartment">
+            <label class="label" for="street_apartment"><span><?= $block->escapeHtml(__('Street Apartment')) ?></span></label>
+            <div class="control">
+                <input type="text"
+                       name="street_apartment"
+                       value="<?= $block->escapeHtmlAttr($streetApartment) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Street Apartment')) ?>"
+                       class="input-text"
+                       id="street_apartment">
+            </div>
+        </div>
+
+        <?php if ($this->helper('Magento\Customer\Helper\Address')->isVatAttributeVisible()) : ?>
+            <div class="field taxvat">
+                <label class="label" for="vat_id">
+                    <span><?= $block->escapeHtml(__('VAT Number')) ?></span>
+                </label>
+                <div class="control">
+                    <input type="text"
+                           name="vat_id"
+                           value="<?= $block->escapeHtmlAttr($block->getAddress()->getVatId()) ?>"
+                           title="<?= $block->escapeHtmlAttr(__('VAT Number')) ?>"
+                           class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('vat_id')) ?>"
+                           id="vat_id">
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="field city required">
+            <label class="label" for="city"><span><?= $block->escapeHtml(__('City')) ?></span></label>
+            <div class="control">
+                <input type="text"
+                       name="city"
+                       value="<?= $block->escapeHtmlAttr($block->getAddress()->getCity()) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('City')) ?>"
+                       class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('city')) ?>"
+                       id="city">
+            </div>
+        </div>
+
+
+
+
+        <div class="field region required">
+            <label class="label" for="region_id">
+                <span><?= $block->escapeHtml(__('State/Province')) ?></span>
+            </label>
+            <div class="control">
+                <select id="region_id" name="region_id"
+                        title="<?= $block->escapeHtmlAttr(__('State/Province')) ?>"
+                        class="validate-select" <?= /* @noEscape */ !$block->getConfig('general/region/display_all') ? ' disabled="disabled"' : '' ?>>
+                    <option value=""><?= $block->escapeHtml(__('Please select a region, state or province.')) ?></option>
+                </select>
+                <input type="text"
+                       id="region"
+                       name="region"
+                       value="<?= $block->escapeHtmlAttr($block->getRegion()) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('State/Province')) ?>"
+                       class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('region')) ?>"<?= !$block->getConfig('general/region/display_all') ? ' disabled="disabled"' : '' ?>/>
+            </div>
+        </div>
+        <div class="field zip required">
+            <label class="label" for="zip">
+                <span><?= $block->escapeHtml(__('Zip/Postal Code')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text"
+                       name="postcode"
+                       value="<?= $block->escapeHtmlAttr($block->getAddress()->getPostcode()) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Zip/Postal Code')) ?>"
+                       id="zip"
+                       class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>">
+            </div>
+        </div>
+        <div class="field country required">
+            <label class="label" for="country"><span><?= $block->escapeHtml(__('Country')) ?></span></label>
+            <div class="control">
+                <?= $block->getCountryHtmlSelect() ?>
+            </div>
+        </div>
+
+        <?php
+
+        $requireInvoice = ($block->getAddress()->getCustomAttribute('require_invoice')) ? $block->getAddress()->getCustomAttribute('require_invoice')->getValue():'';
+        $businessName = ($block->getAddress()->getCustomAttribute('business_name')) ? $block->getAddress()->getCustomAttribute('business_name')->getValue():'';
+        $cuit = ($block->getAddress()->getCustomAttribute('cuit')) ? $block->getAddress()->getCustomAttribute('cuit')->getValue():'';
+        $convenio = ($block->getAddress()->getCustomAttribute('convenio')) ? $block->getAddress()->getCustomAttribute('convenio')->getValue():'';
+        ?>
+
+        <div class="field require_invoice required">
+            <label class="label" for="require_invoice"><span><?= $block->escapeHtml(__('Require Invoice')) ?></span></label>
+            <div class="control">
+                <?= $block->getRequireInvoiceHtml() ?>
+            </div>
+        </div>
+
+
+        <div class="field cuit">
+            <label class="label" for="cuit"><span><?= $block->escapeHtml(__('Cuit')) ?></span></label>
+            <div class="control">
+                <input type="text"
+                       name="cuit"
+                       value="<?= $block->escapeHtmlAttr($cuit) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Cuit')) ?>"
+                       class="input-text validate-digits"
+                       id="cuit" maxlength="11" minlength="10">
+            </div>
+        </div>
+
+        <div class="field business_name">
+            <label class="label" for="business_name"><span><?= $block->escapeHtml(__('Business Name')) ?></span></label>
+            <div class="control">
+                <input type="text"
+                       name="business_name"
+                       value="<?= $block->escapeHtmlAttr($businessName) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Business Name')) ?>"
+                       class="input-text"
+                       id="business_name">
+            </div>
+        </div>
+
+        <div class="field convenio">
+            <label class="label" for="convenio"><span><?= $block->escapeHtml(__('Convenio')) ?></span></label>
+            <div class="control">
+                <?= $block->getConvenioSelectHtml() ?>
+            </div>
+        </div>
+
+
+
+        <?php if ($block->isDefaultBilling()): ?>
+            <!--<div class="message info">
+                <span><?//= $block->escapeHtml(__("It's a default billing address.")) ?></span>
+            </div>-->
+        <?php elseif ($block->canSetAsDefaultBilling()): ?>
+            <!--<div class="field choice set billing">
+                <input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox">
+                <label class="label" for="primary_billing">
+                    <span><?//= $block->escapeHtml(__('Use as my default billing address')) ?></span>
+                </label>
+            </div>-->
+        <?php else: ?>
+            <input type="hidden" name="default_billing" value="1" />
+        <?php endif; ?>
+
+        <?php if ($block->isDefaultShipping()): ?>
+            <div class="message info">
+                <span><?= $block->escapeHtml(__("It's a default shipping address.")) ?></span>
+            </div>
+        <?php elseif ($block->canSetAsDefaultShipping()): ?>
+            <div class="field choice set shipping">
+                <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox">
+                <label class="label" for="primary_shipping">
+                    <span><?= $block->escapeHtml(__('Use as my default shipping address')) ?></span>
+                </label>
+            </div>
+        <?php else: ?>
+            <input type="hidden" name="default_shipping" value="1">
+        <?php endif; ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit"
+                    class="action save primary"
+                    data-action="save-address"
+                    title="<?= $block->escapeHtmlAttr(__('Save Address')) ?>">
+                <span><?= $block->escapeHtml(__('Save Address')) ?></span>
+            </button>
+        </div>
+        <div class="secondary">
+            <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>">
+                <span><?= $block->escapeHtml(__('Go back')) ?></span>
+            </a>
+        </div>
+    </div>
+</form>
+<script type="text/x-magento-init">
+    {
+        "#form-validate": {
+            "addressValidation": {}
+        },
+        "#country": {
+            "regionUpdater": {
+                "optionalRegionAllowed": <?= /* @noEscape */ $block->getConfig('general/region/display_all') ? 'true' : 'false' ?>,
+                "regionListId": "#region_id",
+                "regionInputId": "#region",
+                "postcodeId": "#zip",
+                "form": "#form-validate",
+                "regionJson": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getRegionJson() ?>,
+                "defaultRegion": "<?= (int) $block->getRegionId() ?>",
+                "countriesWithOptionalZip": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getCountriesWithOptionalZip(true) ?>
+            }
+        }
+    }
+</script>

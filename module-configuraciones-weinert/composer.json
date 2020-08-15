@@ -1,0 +1,23 @@
+{
+    "name": "combinatoria/module-configuraciones-weinert",
+    "description": "Genera las configuraciones por defecto para Weinert",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "combinatoria/theme-market-weinert":">=1.0.0",
+        "combinatoria/module-slider":">=1.0.0",
+        "combinatoria/module-banner":">=1.0.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.2",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Combinatoria\\ConfiguracionesWeinert\\": ""
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<?php if (null !== $data = $this->getImpressions()): ?>
+
+	<script>
+
+		(function(callback)
+		{
+			if (AEC.Const.COOKIE_DIRECTIVE)
+			{
+				AEC.CookieConsent.queue(callback);
+			}
+			else 
+			{
+				callback.apply(window,[]);
+			}
+		})
+		(
+			(function(dataLayer, data)
+			{
+				return function()
+				{
+					dataLayer.push(data);
+				}
+			})(dataLayer, <?php echo $data ?>)
+		);
+	
+	</script>
+	
+<?php endif ?>

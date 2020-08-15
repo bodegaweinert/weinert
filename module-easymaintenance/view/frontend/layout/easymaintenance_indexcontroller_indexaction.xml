@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Biztech_Easymaintenance::css/easymaintenance.css"/>
+		<script src="Biztech_Easymaintenance::js/popup.js" />
+	</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="Biztech\Easymaintenance\Block\Indexcontroller\Indexaction" name="indexcontroller_indexaction" template="Biztech_Easymaintenance::easymaintenance/easymaintenance.phtml">
+			</block>
+		</referenceContainer>
+	</body>
+</page>

@@ -1,0 +1,11 @@
+name,url_key,path,active,is_anchor,include_in_menu,position,display_mode,custom_layout_update
+Men,men,,1,0,1,3,PAGE,"<referenceContainer name=""catalog.leftnav"" remove=""true""/>"
+Tops,tops-men,Men,1,1,1,,,
+Hoodies & Sweatshirts,hoodies-and-sweatshirts-men,Men/Tops,1,1,1,,,
+Collections,collections,,0,0,0,,PAGE,
+Eco Friendly,eco-friendly,Collections,1,1,0,,,
+Destacado Home 1,destacado-home-1,,1,1,0,,PAGE,
+Destacado Home 2,Destacado-home-2,,1,1,0,,PAGE,
+Destacado Home 3,Destacado-home-3,,1,1,0,,PAGE,
+Destacado Home 4,Destacado-home-4,,1,1,0,,PAGE,
+Destacado Home 5,Destacado-home-5,,1,1,0,,PAGE,

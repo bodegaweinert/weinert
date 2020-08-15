@@ -1,0 +1,64 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+$_config     = $this->helper('Sm\Market\Helper\Data');
+$headerStyle = $_config->getThemeLayout('header_style');
+include($block->getTemplateFile("Magento_Theme::html/header-style/" . $headerStyle . ".phtml"));
+?>
+
+<?php
+if ($_config->getAdvanced('show_newsletter_popup')) {
+    echo $block->getChildHtml('form.subscribe.popup');
+}
+?>
+
+<?php if($_config->getGeneral('menu_ontop') == 1){ ?>
+    <script type="text/javascript">
+        require([
+            'jquery'
+        ], function ($) {
+            $window = $(window);
+            if($('.header-bottom').length){
+                menu_offset_top = $('.header-bottom').offset().top;
+                function processScroll() {
+                    var scrollTop = $window.scrollTop();
+                    var minicart = $('.minicart-header');
+                    var menuContainer = $('.header-bottom .container .row .link-right');
+                    var headerContainer = $('.col-lg-9.header-middle-right');
+                    if ( scrollTop >= menu_offset_top) {
+                        $('.header-bottom').addClass('menu-on-top');
+                        $('body').addClass('body-on-top');
+                        minicart.appendTo(menuContainer);
+                    } else if (scrollTop <= menu_offset_top) {
+                        $('.header-bottom').removeClass('menu-on-top');
+                        $('body').removeClass('body-on-top');
+                        minicart.prependTo(headerContainer);
+                    }
+                }
+                processScroll();
+                $window.scroll(function(){
+                    processScroll();
+                });
+            }
+            if ($('.ves-megamenu').length){
+                console.log('hay menu');
+                $('.ves-megamenu li.nav-item.level0 ').mouseover(function(){
+                    var overlay = $('#body-overlay');
+                    var top = 195;
+                    var documentHeight = $(document).height();
+                    overlay.css('height', parseInt(documentHeight-top)+'px').css('display','block');
+                });
+                $('.ves-megamenu li.nav-item.level0 ').mouseleave(function(){
+                    var overlay = $('#body-overlay');
+                    overlay.css('display','none');
+                });
+            }
+        });
+    </script>
+<?php } ?>

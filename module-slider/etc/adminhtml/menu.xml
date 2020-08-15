@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Combinatoria_Slider::combinatoria_slider_section"
+             title="Slider"
+             translate="title"
+             module="Combinatoria_Slider"
+             parent="Magento_Backend::stores"
+             resource="Combinatoria_Slider::combinatoria_slider_section"
+             sortOrder="1"/>
+        <add id="Combinatoria_Slider::combinatoria_slider_sliders"
+             title="Manage Slider"
+             translate="title"
+             module="Combinatoria_Slider"
+             parent="Combinatoria_Slider::combinatoria_slider_section"
+             resource="Combinatoria_Slider::combinatoria_slider_sliders"
+             action="combinatoria_slider/slider/index"
+             sortOrder="2"/>
+    </menu>
+</config>

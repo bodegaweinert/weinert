@@ -1,0 +1,30 @@
+{
+  "name": "combinatoria/module-pagebuilder",
+  "description": "Ves PageBuilder  1.0.0",
+  "type": "magento2-component",
+  "version": "1.0.3",
+  "license": [
+    "proprietary"
+  ],
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ves\\PageBuilder\\": "Ves/PageBuilder",
+      "Ves\\BaseWidget\\": "Ves/BaseWidget",
+      "Ves\\All\\": "Ves/All"
+    },
+    "files": [
+      "Ves/PageBuilder/registration.php",
+      "Ves/BaseWidget/registration.php",
+      "Ves/All/registration.php"
+    ]
+  },
+  "extra" :{
+    "map": [
+      ["pub/media/ves_basewidget","pub/media/"],
+      ["pub/media/pagebuilder","pub/media/pagebuilder"]
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "combinatoria/patch-cart-page",
+  "description": "Fix for 500 error in Mage 2.2.2 (issue 12655).",
+  "type": "magento2-module",
+  "homepage": "https://github.com/flancer32/mage2_fix_is12655",
+  "license": "GPL-3.0-only",
+  "authors": [
+    {
+      "name": "Alex Gusev",
+      "email": "alex@flancer64.com"
+    }
+  ],
+  "version": "1.0.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Flancer32\\FixIs12655\\": ""
+    }
+  }
+}

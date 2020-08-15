@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="combinatoria_banner_listing_data_source" xsi:type="string">Combinatoria\Banner\Model\ResourceModel\Banner\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Combinatoria\Banner\Model\ResourceModel\Banner\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">combinatoria_banner</argument>
+            <argument name="resourceModel" xsi:type="string">Combinatoria\Banner\Model\ResourceModel\Banner</argument>
+        </arguments>
+    </virtualType>
+</config>

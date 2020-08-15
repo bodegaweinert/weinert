@@ -1,0 +1,41 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-success">
+    <?php if ($block->getOrderId()):?>
+        <?php if ($block->getCanViewOrder()) :?>
+            <p id="order-generated"><?= __('Your order %1 has been successfully generated.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
+        <?php  else :?>
+            <p id="order-generated"><?= __('Your order %1 has been successfully generated.', '<span>'.$block->escapeHtml($block->getOrderId()).'</span>') ?></p>
+        <?php endif;?>
+    <?php endif;?>
+
+    <?= $block->getAdditionalInfoHtml() ?>    
+
+</div>
+<div class="primary button-success">
+    <p>
+        Una vez que el pago se haya acreditado coordinaremos la entrega.<br/>
+        Por cualquier duda o consulta no dejes de comunicarte con nosotros.
+    </p>
+    <a href="<?php echo $block->escapeUrl($block->getContinueUrl()) ?>"><span><u><?php /* @escapeNotVerified */ echo __('Volver a la home') ?></u></span></a>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('h2.page-title').removeClass('page-title').addClass('general-subtitle');
+
+        var accountCreated = jQuery('#account-created-auth');
+
+        if (accountCreated.length){
+            jQuery('#order-generated').append(accountCreated);
+        }
+    });
+</script>

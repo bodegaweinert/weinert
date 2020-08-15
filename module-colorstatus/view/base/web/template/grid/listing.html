@@ -1,0 +1,30 @@
+<!--
+/**
+ * Color Status
+ *
+ * Set the each sales row with a background color on sales grid.
+ *
+ * @package Igorludgero\Colorstatus
+ * @author Igor Ludgero Miura <igor@imaginemage.com>
+ * @copyright Copyright (c) 2017 Igor Ludgero Miura (https://www.igorludgero.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<div class="admin__data-grid-wrap" data-role="grid-wrapper">
+    <table class="data-grid" data-role="grid">
+        <thead>
+        <tr each="data: getVisible(), as: '$col'" render="getHeader()"/>
+        </thead>
+        <tbody>
+        <tr class="data-row colorstatus-row" repeat="foreach: rows, item: '$row'" css="'_odd-row': $index % 2"
+            attr="style: getColorStyle($row())">
+            <td outerfasteach="data: getVisible(), as: '$col'"
+                css="getFieldClass($row())" click="getFieldHandler($row())" template="getBody()"/>
+        </tr>
+        <tr ifnot="hasData()" class="data-grid-tr-no-data">
+            <td attr="colspan: countVisible()" translate="'We couldn\'t find any records.'"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

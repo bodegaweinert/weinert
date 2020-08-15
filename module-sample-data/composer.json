@@ -1,0 +1,27 @@
+{
+  "name": "combinatoria/module-sample-data",
+  "description": "Dablox Sample Data",
+  "version": "1.0.3",
+  "license": [
+    "proprietary"
+  ],
+  "type": "magento2-component",
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Magento\\CatalogSampleData\\"      : "SampleData/CatalogSampleData",
+      "Magento\\ConfigurableSampleData\\"        : "SampleData/ConfigurableSampleData"
+    },
+    "files" : [
+      "SampleData/CatalogSampleData/registration.php",
+      "SampleData/ConfigurableSampleData/registration.php"
+    ]
+  },
+  "extra" :{
+    "map": [
+      ["pub/media/","pub/media/"]
+    ]
+  }
+}

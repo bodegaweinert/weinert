@@ -1,0 +1,22 @@
+{
+  "name": "combinatoria/module-performance-tools",
+  "description": "Performance extensions by Apptrian",
+  "type": "magento2-component",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Apptrian\\ImageOptimizer\\": "src/ImageOptimizer",
+      "Apptrian\\Minify\\": "src/Minify"
+    },
+    "files": [
+      "src/ImageOptimizer/registration.php",
+      "src/Minify/registration.php"
+    ]
+  }
+}

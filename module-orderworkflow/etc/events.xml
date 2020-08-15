@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_save_before">
+        <observer name="ow_sales_order_save_before" instance="Combinatoria\OrderWorkflow\Observer\SalesOrderSaveBefore" />
+    </event>
+    <event name="checkout_submit_all_after">
+        <observer name="ow_checkout_submit_all_after" instance="Combinatoria\OrderWorkflow\Observer\CheckoutSubmitAllAfter" />
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="ow_quote_submit_before" instance="Combinatoria\OrderWorkflow\Observer\QuoteSubmitBeforeObserver" />
+    </event>
+</config>

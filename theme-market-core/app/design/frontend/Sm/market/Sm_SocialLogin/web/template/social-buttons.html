@@ -1,0 +1,22 @@
+<!--
+/**
+ *
+ * SM Social Login - Version 1.0.0
+ * Copyright (c) 2017 YouTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * Author: YouTech Company
+ * Websites: http://www.magentech.com
+ */
+ -->
+
+<!-- ko if: isActive() -->
+<div class="block social-login-container col-mgt">
+    <div class="block-content" data-bind="foreach: socials()">
+		<div class="actions-toolbar social-btn" data-bind="css: key + '-login'">
+			<a class="btn btn-block btn-social" data-bind="css: 'btn-' + btn_key, socialLoginButton: $parent.isActive, url: url, label: label">
+				<span class="fa" data-bind="css: 'fa-' + btn_key"></span>
+			</a>
+		</div>
+    </div>
+</div>
+<!-- /ko -->

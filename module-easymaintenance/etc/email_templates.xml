@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="easymaintenance_notification_template" label="User Notification" file="notification.html" type="html" module="Biztech_Easymaintenance" area="frontend"/>
+
+    <template id="easymaintenance_feedback_template" label="Feedback" file="feedback.html" type="html" module="Biztech_Easymaintenance" area="frontend"/>
+    
+    <template id="easymaintenance_alert_template" label="Alert" file="alert.html" type="html" module="Biztech_Easymaintenance" area="frontend"/>
+</config>

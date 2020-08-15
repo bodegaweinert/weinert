@@ -1,0 +1,23 @@
+{
+  "name": "combinatoria/module-newsletter-subscription",
+  "description": "Modulo que extiende la subscripcion al newsletter y le agrega la posibilidad de enviar un cupon de descuento.",
+  "authors": [
+    {
+      "name": "Combinatoria",
+      "email": "contacto@combinatoria.com.ar"
+    }
+  ],
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Combinatoria\\NewsletterSubscription\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  }
+}

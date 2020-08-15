@@ -1,0 +1,25 @@
+{
+  "name": "combinatoria/module-special-promotions",
+  "description": "Amasty Special Promotions",
+  "type": "magento2-component",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "require": {
+        "php": "~5.6.5|7.0.2|7.0.4|~7.0.6|~7.1.0",
+        "combinatoria/module-amasty-core": ">=1.0.6"
+    },
+  "autoload": {
+    "psr-4": {
+      "Amasty\\Rgrid\\": "Amasty/Rgrid",
+      "Amasty\\Rules\\": "Amasty/Rules",
+      "Amasty\\RulesPro\\": "Amasty/RulesPro"
+    },
+    "files": [
+      "Amasty/Rgrid/registration.php",
+      "Amasty/Rules/registration.php",
+      "Amasty/RulesPro/registration.php"
+    ]
+  }
+}

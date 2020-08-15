@@ -1,0 +1,214 @@
+//
+//  Variables
+//  _____________________________________________
+
+@mp_regular_text_color: #838383;
+@mp_error_color: #e02b27;
+@mp_error_font_size: 1.2rem;
+@mp_ticket_option_color: #ff5501;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) , (@media-target = 'all') {
+
+  .payment-method-title {
+    label[for='mercadopago_custom'],
+    label[for='mercadopago_customticket'] {
+      span {
+        display: inline-block;
+        width: 130px;
+      }
+    }
+  }
+
+  #return_list_card_mp {
+    display: none;
+  }
+
+  #cardNumber,
+  #second_card_cardNumber{
+    background-color: #fff !important;
+    background-position: 98% 50% !important;
+    width: 100%;
+  }
+
+  #payment_form_mercadopago_custom {
+    .field {
+      margin: 5px !important;
+    }
+  }
+
+  #co-mercadopago-form {
+    .total_buy {
+      display: none;
+    }
+
+    .legal-info {
+      color: @mp_regular_text_color;
+    }
+
+    .mp-costos{
+      a {
+        color: @mp_regular_text_color;
+      }
+
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+
+  #mercadopago_checkout_custom {
+    .message-error{
+      color: @mp_error_color;
+      font-size: @mp_error_font_size;
+    }
+
+    .input-with-error{
+      border: 1px solid @mp_error_color;
+    }
+
+    .field-tooltip{
+      top: 5px !important;
+    }
+  }
+
+
+  #mercadopago_checkout_custom_ticket {
+    .optionsTicketMp {
+      float: left;
+      margin-right: 10px;
+      display:block;
+      visibility: hidden;
+    }
+
+    .message-error{
+      color: @mp_error_color;
+      font-size: @mp_error_font_size;
+      display: none;
+    }
+
+    .option-ticket-row{
+      &:hover{
+        background-color: #FFFFFF;
+      }
+      &.selected {
+        .ticket-option{
+          .ticket-radio {
+            .radio-center{
+              display: block;
+            }
+          }
+        }
+        background-color: #FFFFFF;
+      }
+
+      .ticket-radio{
+        .radio-center{
+          display: none;
+          width: 6px;
+          height: 6px;
+          background-color: @mp_ticket_option_color;
+          border-radius: 50%;
+          margin-top: 3px;
+          margin-left: 3px;
+        }
+
+        border-radius: 50%;
+        display: block;
+        width: 16px;
+        height: 16px;
+        float: left;
+        border: 2px solid @mp_ticket_option_color;
+        margin-left: 10px;
+        margin-top: 3px;
+      }
+
+      .mercadopago-ticket-label{
+        font-size: 13px !important;
+        color: #666666;
+        width: 100%;
+        text-align: center;
+        padding: 0px !important;
+        overflow: hidden;
+        display: inline-block;
+        height: 20px;
+      }
+
+      .ticket-option{
+        height: 100%;
+        width: 13%;
+        float: left;
+      }
+
+      .ticket-info{
+        .ticket-image{
+          img{
+            margin: auto !important;
+          }
+
+          height: 24px;
+          vertical-align: middle;
+        }
+
+        height: 100%;
+        width: 87%;
+        float: left;
+        padding: 2px;
+      }
+
+      width: 29%;
+      height: 50px;
+      background-color: #f8f8f8;
+      border: 1px solid #d8d8d8;
+      border-radius: 3px;
+      float: left;
+      margin: 10px;
+      cursor: pointer;
+    }
+  }
+
+
+  .mercadopago-core-checkout-page{
+    #box-mercadopago {
+      p {
+        a {
+          font-weight: 800;
+        }
+        font-family: 'Open Sans';
+        font-size: 12px;
+        color: #666666;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      text-align:center;
+    }
+
+    .page-title-wrapper{
+      display:none;
+    }
+
+    #btn-boleto-mercadopago{
+      &:hover{
+        color: #FFF !important;
+      }
+      padding: 10px 20px;
+      color: #FFF;
+    }
+
+    #logo-mercadopago{
+      .protegida{
+        width: 160px;
+        margin-left: 50px;
+      }
+      text-align: center;
+      padding:15px;
+    }
+
+    .button-success{
+      text-align: center;
+    }
+  }
+
+}

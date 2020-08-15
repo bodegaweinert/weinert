@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Combinatoria_Banner::combinatoria_banner_section"
+             title="Banner"
+             translate="title"
+             module="Combinatoria_Banner"
+             parent="Magento_Backend::stores"
+             resource="Combinatoria_Banner::combinatoria_banner_section"
+             sortOrder="1"/>
+        <add id="Combinatoria_Banner::combinatoria_banner_banners"
+             title="Manage Banner"
+             translate="title"
+             module="Combinatoria_Banner"
+             parent="Combinatoria_Banner::combinatoria_banner_section"
+             resource="Combinatoria_Banner::combinatoria_banner_banners"
+             action="combinatoria_banner/banner/index"
+             sortOrder="2"/>
+    </menu>
+</config>
